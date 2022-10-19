@@ -6,7 +6,7 @@ export const githubApi = createApi({
   reducerPath: 'githubApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'https://api.github.com/' }),
   endpoints: (builder) => ({
-    getPokemonByName: builder.query({
+    getGithubByName: builder.query({
       query: (q=null, created=null, sort=null, order=null) => 
         `search/repositories?q=created:>2019-01-10&sort=stars&order=desc`, // TODO: handle with details
     }),
@@ -15,4 +15,6 @@ export const githubApi = createApi({
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
+console.log(githubApi)
+
 export const { useGetGithubByNameQuery } = githubApi
