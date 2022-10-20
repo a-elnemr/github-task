@@ -1,30 +1,4 @@
-/*
-
-import { Text } from "react-native";
-import { useGetGithubByNameQuery } from "../services/github";
-
-import ReposList from "../components/ReposList";
-import repos from "../components/repos_example";
-const ReposRoute = () => {
-    const { data, error, isLoading } = useGetGithubByNameQuery()
-    console.log(data, error, isLoading);
-
-    const toRender = error ? (
-            <Text>Oh no, there was an error</Text>
-        ) : isLoading ? (
-            <Text>Loading...</Text>
-        ) : data ? (
-            <ReposList repos={data.items}/>
-        ) : null;
-
-    return toRender;
-};
-
-export default ReposRoute;
-
-
-
-*/
+import DatePicker from "react-native-modern-datepicker";
 
 import React from "react";
 import { SafeAreaView, ScrollView, Text, View } from "react-native";
@@ -81,10 +55,13 @@ const LanguageListItem = ({ language, setLanguage, hideDialog }) => {
 
 const ReposRoute = () => {
   const [visible, setVisible] = React.useState(false);
+  const [datePickerVisible, setDatePickerVisible] = React.useState(false);
 
   const showDialog = () => setVisible(true);
-
   const hideDialog = () => setVisible(false);
+
+  const showDatePicker = () => setDatePickerVisible(true);
+  const hideDatePicker = () => setDatePickerVisible(false);
 
   const [language, setLanguage] = React.useState("Any");
 
@@ -92,7 +69,8 @@ const ReposRoute = () => {
 
   const { data, error, isFetching } = useGetGithubByNameQuery(queryObject);
 
-  console.log(`LAnguage is ${language}`);
+  //console.log(`Language is ${language}`);
+  const [selectedDate, setSelectedDate] = React.useState("");
 
   const toRender = error ? (
     <Text>Oh no, there was an error</Text>
@@ -106,6 +84,7 @@ const ReposRoute = () => {
     <View>
       <View>
         <Button onPress={showDialog}>Language: {language}</Button>
+        <Button onPress={showDatePicker}>Date: {selectedDate}</Button>
 
         <Portal>
           <Dialog visible={visible} onDismiss={hideDialog}>
@@ -124,10 +103,25 @@ const ReposRoute = () => {
             </SafeAreaView>
           </Dialog>
         </Portal>
+
+        <Portal>
+          <Dialog visible={datePickerVisible} onDismiss={hideDatePicker}>
+            <SafeAreaView>
+              <ScrollView>
+                <DatePicker
+                  onSelectedChange={(date) => setSelectedDate(date)}
+                />
+              </ScrollView>
+            </SafeAreaView>
+          </Dialog>
+        </Portal>
       </View>
+
       {toRender}
     </View>
   );
 };
+
+//        <DatePicker onSelectedChange={(date) => setSelectedDate(date)} />
 
 export default ReposRoute;
