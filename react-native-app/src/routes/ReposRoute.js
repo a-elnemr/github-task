@@ -27,7 +27,7 @@ export default ReposRoute;
 */
 
 import React from "react";
-import { Text, View } from "react-native";
+import { SafeAreaView, ScrollView, Text, View } from "react-native";
 import { useGetGithubByNameQuery } from "../services/github";
 import { Button, Paragraph, Dialog, Portal } from "react-native-paper";
 import ReposList from "../components/ReposList";
@@ -74,7 +74,6 @@ const LanguageListItem = ({ language, setLanguage, hideDialog }) => {
           hideDialog();
         }}
       />
-      <Divider />
     </>
   );
 };
@@ -106,14 +105,19 @@ const ReposRoute = () => {
 
         <Portal>
           <Dialog visible={visible} onDismiss={hideDialog}>
-            <List.Item
-              title="Python"
-              onPress={() => {
-                setLanguage(10);
-                hideDialog();
-              }}
-            />
-            <Divider />
+            <SafeAreaView>
+              <ScrollView>
+                {languages.map((lang) => (
+                  <LanguageListItem
+                    language={lang}
+                    hideDialog={hideDialog}
+                    setLanguage={setLanguage}
+                    key={lang}
+                  />
+                ))}
+                <Divider />
+              </ScrollView>
+            </SafeAreaView>
           </Dialog>
         </Portal>
       </View>
