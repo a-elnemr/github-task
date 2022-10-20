@@ -8,7 +8,7 @@ export const githubApi = createApi({
   endpoints: (builder) => ({
     getGithubByName: builder.query({
       query: (paramenters={}) => {
-        paramenters = {...paramenters, q:`created:>2019-01-10`};
+        paramenters = {...paramenters, q:`is:public`};
         const searchParementers = new URLSearchParams(paramenters);
         const searchParemetersString = searchParementers.toString();
         console.log(`searchParemetersString: ${searchParemetersString}`)
@@ -19,8 +19,10 @@ export const githubApi = createApi({
   }),
 })
 //q=created:>2019-01-10&sort=stars&order=desc
-// Export hooks for usage in functional components, which are
-// auto-generated based on the defined endpoints
+
+
+// https://docs.github.com/en/rest/search#search-repositories
+// https://github.com/collections/programming-languages
 console.log(githubApi)
 
 export const { useGetGithubByNameQuery } = githubApi
