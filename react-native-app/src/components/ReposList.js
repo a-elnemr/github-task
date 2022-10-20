@@ -7,9 +7,13 @@ import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
 
 const LeftContent = props => <Avatar.Icon {...props} icon="folder" />
 
-const RepoCard = () => (
-  <Card style={{margin:4}}>
-    <Card.Title title="Card Title" subtitle="Card Subtitle" left={LeftContent} />
+const RepoCard = ({repo}) => {
+
+  
+  console.log(JSON.stringify(repo));
+
+  return (<Card style={{margin:4}}>
+    <Card.Title title={repo.full_name} left={LeftContent} />
     <Card.Content>
       <Title>Card title</Title>
       <Paragraph>Card content</Paragraph>
@@ -19,8 +23,8 @@ const RepoCard = () => (
       <Button>Cancel</Button>
       <Button>Ok</Button>
     </Card.Actions>
-  </Card>
-);
+  </Card>)
+};
 
 
 const ReposList = ( {repos} ) =>
