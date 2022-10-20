@@ -1,19 +1,16 @@
 import { Text } from "react-native";
 import { useGetGithubByNameQuery } from "../services/github";
-import ReposList from "../components/ReposList";
+
+import ExploreList from "../components/ExploreList";
 
 import repos from "../components/repos_example";
 
-
-
 const ExploreTest = () =>{
     console.log(repos);
-    const toRender = <ReposList repos={repos}/>;
+    const toRender = <ExploreList repos={repos}/>;
     return toRender;
 
 }
-
-
 
 const Explore = () => {
     const { data, error, isLoading } = useGetGithubByNameQuery()
@@ -24,7 +21,7 @@ const Explore = () => {
         ) : isLoading ? (
             <Text>Loading...</Text>
         ) : data ? (
-            <ReposList repos={data.items}/>
+            <ExploreList repos={data.items}/>
         ) : null;
 
     return toRender;
