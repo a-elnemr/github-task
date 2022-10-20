@@ -1,8 +1,7 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, SafeAreaView, ScrollView, StatusBar } from "react-native";
 import { Router, Route, Link } from "./react-router";
 import { Provider } from 'react-redux';
 import { store } from "./src/app/store";
-import { useGetGithubByNameQuery } from "./src/services/github";
 import { Provider as PaperProvider } from 'react-native-paper';
 
 
@@ -12,19 +11,21 @@ import ExploreRoute from "./src/routes/ExploreRoute";
 const App = () => {
   return (
   <Router>
-    <View style={styles.container}>
-      <View style={styles.nav}>
-        <Link to="/">
-          <Text>Explore</Text>
-        </Link>
-        <Link to="/repos">
-          <Text>Repos</Text>
-        </Link>
-      </View>
+    <SafeAreaView style={styles.container}>
+      <ScrollView style={styles.scrollView}>
+        <View style={styles.nav}>
+          <Link to="/">
+            <Text>Explore</Text>
+          </Link>
+          <Link to="/repos">
+            <Text>Repos</Text>
+          </Link>
+        </View>
 
-      <Route exact path="/" component={ExploreRoute} />
-      <Route path="/repos" component={ReposRoute} />
-    </View>
+        <Route exact path="/" component={ExploreRoute} />
+        <Route path="/repos" component={ReposRoute} />
+      </ScrollView>
+    </SafeAreaView>
   </Router>
 )};
 
