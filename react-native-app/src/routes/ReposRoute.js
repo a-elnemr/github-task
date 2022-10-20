@@ -109,7 +109,10 @@ const ReposRoute = () => {
             <SafeAreaView>
               <ScrollView>
                 <DatePicker
-                  onSelectedChange={(date) => setSelectedDate(date)}
+                  onSelectedChange={(date) => {
+                    setSelectedDate(date);
+                    hideDatePicker();
+                  }}
                 />
               </ScrollView>
             </SafeAreaView>
