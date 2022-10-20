@@ -39,11 +39,6 @@ const styles = StyleSheet.create({
 
 
 
-
-
-
-
-
 import React from "react";
 import { createRoot } from "react-dom/client";
 import {
@@ -55,13 +50,14 @@ import { RouterProvider } from "react-router-dom";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: < Home />,
+    element: <>Explore</>,
   },
   {
-    path: "about",
-    element: <About />,
+    path: "repos",
+    element: <>Repos</>,
   },
 ]);
+
 
 
 
