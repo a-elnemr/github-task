@@ -26,14 +26,14 @@ npm run web
 
 ### Images:
 
-<img src="screenshots/01.png" width="180" height="320"/>
-<img src="screenshots/02.png" width="180" height="320"/>
-<img src="screenshots/03.png" width="180" height="320"/>
-<img src="screenshots/04.png" width="180" height="320"/>
-<img src="screenshots/05.png" width="180" height="320"/>
-<img src="screenshots/06.png" width="180" height="320"/>
-<img src="screenshots/07.png" width="180" height="320"/>
-<img src="screenshots/08.png" width="180" height="320"/>
+<img src="screenshots/01.png" width="270" height="480"/>
+<img src="screenshots/02.png" width="270" height="480"/>
+<img src="screenshots/03.png" width="270" height="480"/>
+<img src="screenshots/04.png" width="270" height="480"/>
+<img src="screenshots/05.png" width="270" height="480"/>
+<img src="screenshots/06.png" width="270" height="480"/>
+<img src="screenshots/07.png" width="270" height="480"/>
+<img src="screenshots/08.png" width="270" height="480"/>
 
 ### TODOS:
 
