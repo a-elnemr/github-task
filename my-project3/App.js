@@ -1,34 +1,19 @@
+import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-
+import { createBrowserRouter, Link, RouterProvider, Outlet } from "react-router-dom";
 import { Provider } from 'react-redux';
+
 import { store } from "./src/app/store";
 import { Provider as PaperProvider } from 'react-native-paper';
 
-import { Link } from "react-router-dom";
+import Explore from "./src/routes/Explore";
+import Repos from "./src/routes/Repos";
 
 
 const Home = () => <Text>Explore</Text>;
 
 const About = () => <Text>Repos</Text>;
-/*
-const App = () => (
-  <Router>
-    <View style={styles.container}>
-      <View style={styles.nav}>
-        <Link to="/">
-          <Text>Home</Text>
-        </Link>
-        <Link to="/about">
-          <Text>About</Text>
-        </Link>
-      </View>
 
-      <Route exact path="/" component={Home} />
-      <Route path="/about" component={About} />
-    </View>
-  </Router>
-);
-*/
 const styles = StyleSheet.create({
   container: {
     marginTop: 25,
@@ -42,59 +27,25 @@ const styles = StyleSheet.create({
 
 
 
-
-
-
-
-import React from "react";
-import { createRoot } from "react-dom/client";
-import { createBrowserRouter } from "react-router-dom";
-import { RouterProvider } from "react-router-dom";
-
-import { Outlet } from "react-router-dom";
-import Explore from "./src/routes/Explore";
-
-
-
-
-
-
-
-
-
 const MainApp = () =>{
   return (
-    <View style={styles.container}>
-      <View style={styles.nav}>
-        <Link to="/">
-          <Text>Explore</Text>
-        </Link>
-        <Link to="/repos">
-          <Text>Repos</Text>
-        </Link>
-      </View>
-        <Outlet />
-    </View>
+    <Provider store={store}>
+      <PaperProvider>
+        <View style={styles.container}>
+          <View style={styles.nav}>
+            <Link to="/">
+              <Text>Explore</Text>
+            </Link>
+            <Link to="/repos">
+              <Text>Repos</Text>
+            </Link>
+          </View>
+            <Outlet />
+        </View>
+    </PaperProvider>
+  </Provider>
   )
 }
-
-
-
-
-
-
-
-
-
-/*
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <MainApp />,
-  },
-]);
-*/
 
 
 const router = createBrowserRouter([
@@ -115,25 +66,8 @@ const router = createBrowserRouter([
 ]);
 
 
-
-
-
-
-
 const App = () =>{
   return <RouterProvider router={router} />
 }
 
-
-
-
-
-
-
-
 export default App;
-
-
-
-
-
