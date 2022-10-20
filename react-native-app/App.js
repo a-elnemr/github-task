@@ -44,11 +44,11 @@ const styles = StyleSheet.create({
 
 const MainApp = () =>{
   return (
-    <PaperProvider>
-      <Provider store={store}>
+    <Provider store={store}>
+      <PaperProvider>
         <App />
-      </Provider>
-    </PaperProvider>
+      </PaperProvider>
+    </Provider>
   )
 
 }
