@@ -14,6 +14,8 @@ import ReposList from "../components/ReposList";
 
 import { List, Divider } from "react-native-paper";
 
+import { getToday, getFormatedDate } from "react-native-modern-datepicker";
+
 const languages = [
   "Any",
   "JavaScript",
@@ -58,6 +60,8 @@ const LanguageListItem = ({ language, setLanguage, hideDialog }) => {
   );
 };
 
+const splitDate = (date) => date.split("/");
+
 const ReposRoute = () => {
   const [visible, setVisible] = React.useState(false);
   const [datePickerVisible, setDatePickerVisible] = React.useState(false);
@@ -70,16 +74,22 @@ const ReposRoute = () => {
 
   const [language, setLanguage] = React.useState("Any");
 
-  const queryObject = { language };
+  //console.log(`Language is ${language}`);
+  const [yearToday, monthToday, dayToday] = splitDate(getToday());
+
+  const [selectedDate, setSelectedDate] = React.useState(
+    `${yearToday - 2}/${monthToday}/${dayToday}`
+  );
+  const queryObject = { language, date: selectedDate };
 
   const { data, error, isFetching } = useGetGithubByNameQuery(queryObject);
-
-  //console.log(`Language is ${language}`);
-  const [selectedDate, setSelectedDate] = React.useState("");
 
   console.log(selectedDate);
   console.log(typeof selectedDate);
   console.log(new Date(selectedDate));
+
+  //const todayString =
+  console.log(yearToday, monthToday, dayToday);
 
   const toRender = error ? (
     <Text>Oh no, there was an error</Text>
@@ -122,6 +132,9 @@ const ReposRoute = () => {
                     setSelectedDate(date);
                     hideDatePicker();
                   }}
+                  maximumDate={getToday()}
+                  current={selectedDate}
+                  mode="calendar"
                 />
               </ScrollView>
             </SafeAreaView>
