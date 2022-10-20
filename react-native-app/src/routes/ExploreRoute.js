@@ -29,6 +29,7 @@ const ExploreRoute = () => {
   const { data, error, isFetching } = useGetGithubByNameQuery({
     per_page: limit,
   });
+
   console.log(data, error, isFetching);
 
   const toRender = error ? (

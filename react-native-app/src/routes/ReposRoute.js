@@ -33,6 +33,7 @@ import { Button, Paragraph, Dialog, Portal } from "react-native-paper";
 import ReposList from "../components/ReposList";
 
 import { List, Divider } from "react-native-paper";
+import { lang } from "moment";
 
 const languages = [
   "Any",
@@ -87,13 +88,11 @@ const ReposRoute = () => {
 
   const [language, setLanguage] = React.useState("Any");
 
-  const queryObject = {};
-  if (language !== "Any") {
-    queryObject["language"] = language;
-  }
+  const queryObject = { language };
 
   const { data, error, isFetching } = useGetGithubByNameQuery(queryObject);
-  console.log(data, error, isFetching);
+
+  console.log(`LAnguage is ${language}`);
 
   const toRender = error ? (
     <Text>Oh no, there was an error</Text>

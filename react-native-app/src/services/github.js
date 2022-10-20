@@ -7,9 +7,13 @@ export const githubApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "https://api.github.com/" }),
   endpoints: (builder) => ({
     getGithubByName: builder.query({
-      query: (paramenters = {}) => {
-        paramenters = { ...paramenters, q: `is:public` };
-        const searchParementers = new URLSearchParams(paramenters);
+      query: ({ per_page = 30, language = "Any", date = null } = {}) => {
+        console.log("Passed parameters", per_page, language, date);
+        const languageString =
+          language !== "Any" ? ` language:${language}` : "";
+        let q = `is:public${languageString}`;
+        const queryParemeters = { per_page, q };
+        const searchParementers = new URLSearchParams(queryParemeters);
         const searchParemetersString = searchParementers.toString();
         console.log(`searchParemetersString: ${searchParemetersString}`);
         return `search/repositories?${searchParemetersString}`; // TODO: handle with details
@@ -17,6 +21,13 @@ export const githubApi = createApi({
     }),
   }),
 });
+
+/*
+  if (language !== "Any") {
+    queryObject["language"] = language;
+  }
+*/
+
 //q=created:>2019-01-10&sort=stars&order=desc
 
 // https://docs.github.com/en/rest/search#search-repositories
