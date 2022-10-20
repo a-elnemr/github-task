@@ -4,10 +4,12 @@ import { Provider } from 'react-redux';
 import { store } from "./src/app/store";
 import { Provider as PaperProvider } from 'react-native-paper';
 
+import { Link } from "react-router-dom";
 
-const Home = () => <Text>Home</Text>;
 
-const About = () => <Text>About</Text>;
+const Home = () => <Text>Explore</Text>;
+
+const About = () => <Text>Repos</Text>;
 /*
 const App = () => (
   <Router>
@@ -63,7 +65,14 @@ import Explore from "./src/routes/Explore";
 const MainApp = () =>{
   return (
     <View style={styles.container}>
-        Hi
+      <View style={styles.nav}>
+        <Link to="/">
+          <Text>Explore</Text>
+        </Link>
+        <Link to="/repos">
+          <Text>Repos</Text>
+        </Link>
+      </View>
         <Outlet />
     </View>
   )
@@ -77,7 +86,7 @@ const MainApp = () =>{
 
 
 
-
+/*
 
 const router = createBrowserRouter([
   {
@@ -85,9 +94,8 @@ const router = createBrowserRouter([
     element: <MainApp />,
   },
 ]);
+*/
 
-
-/*
 
 const router = createBrowserRouter([
   {
@@ -95,19 +103,18 @@ const router = createBrowserRouter([
     element: <MainApp />,
     children: [
       {
-        path: "about",
-        element: Home,
+        path: "",
+        element: <Home />,
       },
       {
         path: "repos",
-        element: About,
+        element: <About />,
       },
     ],
   },
 ]);
 
 
-*/
 
 
 
