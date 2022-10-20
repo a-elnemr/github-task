@@ -25,11 +25,10 @@ const RepoCard = ({repo}) => {
   return (<Card style={{margin:4}}>
     <Card.Title title={repo.full_name} left={LeftContent} />
     <Card.Content>
-      <Title>Card title</Title>
-      <Paragraph>{repo.description}</Paragraph>
       <Paragraph>{repo.description}</Paragraph>
       <Paragraph>{time_difference}</Paragraph>
-      <Paragraph>{time_difference}</Paragraph>
+      <Paragraph>{repo.language}</Paragraph>
+      <Paragraph>  {repo.stargazers_count}</Paragraph>
       
     </Card.Content>
     <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
