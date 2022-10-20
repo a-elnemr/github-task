@@ -6,8 +6,8 @@ import { useGetGithubByNameQuery } from "./src/services/github";
 import { Provider as PaperProvider } from 'react-native-paper';
 
 
-import Explore from "./src/routes/Explore";
-import Repos from "./src/routes/Repos";
+import ReposRoute from "./src/routes/ReposRoute";
+import ExploreRoute from "./src/routes/ExploreRoute";
 
 const App = () => {
   return (
@@ -22,8 +22,8 @@ const App = () => {
         </Link>
       </View>
 
-      <Route exact path="/" component={Explore} />
-      <Route path="/repos" component={Repos} />
+      <Route exact path="/" component={ExploreRoute} />
+      <Route path="/repos" component={ReposRoute} />
     </View>
   </Router>
 )};
