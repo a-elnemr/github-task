@@ -8,9 +8,6 @@ import Explore from "./src/routes/Explore";
 import Repos from "./src/routes/Repos";
 
 const App = () => {
-  const { data, error, isLoading } = useGetGithubByNameQuery()
-  console.log(data, error, isLoading);
-
   return (
   <Router>
     <View style={styles.container}>
@@ -51,8 +48,6 @@ const MainApp = () =>{
   )
 
 }
-
-
 
 
 
