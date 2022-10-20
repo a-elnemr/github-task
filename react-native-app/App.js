@@ -27,12 +27,6 @@ const App = () => {
             <Text>Repos</Text>
           </Link>
           <View>
-        
-        
-        
-
-
-
 
       </View>
         </View>
