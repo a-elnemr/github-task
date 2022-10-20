@@ -9,7 +9,7 @@ const RepoCard = ({repo}) =>{
 const ReposList = ( {repos} ) =>
 {
     console.log(repos);
-    return <Text>R</Text>;
+    return repos.map((repo)=><RepoCard repo={repo}/>);
 }
 
 export default ReposList;
