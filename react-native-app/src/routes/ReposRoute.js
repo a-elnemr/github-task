@@ -87,7 +87,12 @@ const ReposRoute = () => {
 
   const [language, setLanguage] = React.useState("Any");
 
-  const { data, error, isFetching } = useGetGithubByNameQuery();
+  const queryObject = {};
+  if (language !== "Any") {
+    queryObject["language"] = language;
+  }
+
+  const { data, error, isFetching } = useGetGithubByNameQuery(queryObject);
   console.log(data, error, isFetching);
 
   const toRender = error ? (
