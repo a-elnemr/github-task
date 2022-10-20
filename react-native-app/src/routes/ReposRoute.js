@@ -80,7 +80,11 @@ const ReposRoute = () => {
   const [selectedDate, setSelectedDate] = React.useState(
     `${yearToday - 2}/${monthToday}/${dayToday}`
   );
-  const queryObject = { language, date: selectedDate };
+
+  console.log("formatted ", getFormatedDate(selectedDate, "YYYY-MM-DD"));
+  const formattedDate = getFormatedDate(selectedDate, "YYYY-MM-DD");
+
+  const queryObject = { language, date: formattedDate };
 
   const { data, error, isFetching } = useGetGithubByNameQuery(queryObject);
 
