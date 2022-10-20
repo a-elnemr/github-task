@@ -1,5 +1,10 @@
 import { StyleSheet, Text, View } from "react-native";
 
+import { Provider } from 'react-redux';
+import { store } from "./src/app/store";
+import { Provider as PaperProvider } from 'react-native-paper';
+
+
 const Home = () => <Text>Home</Text>;
 
 const About = () => <Text>About</Text>;
@@ -47,6 +52,18 @@ import {
 import { RouterProvider } from "react-router-dom";
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -67,7 +84,25 @@ const App = () =>{
 
 
 
-export default App;
+
+
+
+const MainApp = () =>{
+  return (
+    <Provider store={store}>
+      <PaperProvider>
+        <App />
+      </PaperProvider>
+    </Provider>
+  )
+}
+
+
+
+
+
+
+export default MainApp;
 
 
 
