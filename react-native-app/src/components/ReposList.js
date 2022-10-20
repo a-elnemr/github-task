@@ -16,6 +16,9 @@ const RepoCard = ({repo}) => {
   
   //console.log(JSON.stringify(repo));
 
+  console.log(Date.parse(repo.updated_at));
+
+
   return (<Card style={{margin:4}}>
     <Card.Title title={repo.full_name} left={LeftContent} />
     <Card.Content>
