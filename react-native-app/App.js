@@ -14,12 +14,7 @@ import ReposRoute from "./src/routes/ReposRoute";
 import ExploreRoute from "./src/routes/ExploreRoute";
 
 const App = () => {
-  const [visible, setVisible] = React.useState(false);
 
-  const showDialog = () => setVisible(true);
-
-  const hideDialog = () => setVisible(false);
-  
   return (
   <Router>
     <SafeAreaView style={styles.container}>
@@ -32,21 +27,10 @@ const App = () => {
             <Text>Repos</Text>
           </Link>
           <View>
-        <Button onPress={showDialog}>Show Dialog</Button>
         
         
         
-        <Portal>
-          <Dialog visible={visible} onDismiss={hideDialog}>
-            <Dialog.Title>Alert</Dialog.Title>
-            <Dialog.Content>
-              <Paragraph>This is simple dialog</Paragraph>
-            </Dialog.Content>
-            <Dialog.Actions>
-              <Button onPress={hideDialog}>Done</Button>
-            </Dialog.Actions>
-          </Dialog>
-        </Portal>
+
 
 
 
