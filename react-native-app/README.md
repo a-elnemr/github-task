@@ -46,4 +46,4 @@ npm run web
 
 ### Notes:
 
-- I did have Adobe XD installed on my PC, so I tried to mimic the features in the link
+- I do not have Adobe XD installed on my PC, so I tried to mimic the features in the link
