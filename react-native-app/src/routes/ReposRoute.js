@@ -12,7 +12,7 @@ const ReposRouteTest = () =>{
 }
 
 const ReposRoute = () => {
-    const { data, error, isLoading } = useGetGithubByNameQuery()
+    const { data, error, isLoading } = useGetGithubByNameQuery("abc")
     console.log(data, error, isLoading);
 
     const toRender = error ? (

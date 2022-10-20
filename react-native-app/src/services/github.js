@@ -7,12 +7,18 @@ export const githubApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: 'https://api.github.com/' }),
   endpoints: (builder) => ({
     getGithubByName: builder.query({
-      query: (q=null, created=null, sort=null, order=null) => 
-        `search/repositories?q=created:>2019-01-10&sort=stars&order=desc`, // TODO: handle with details
+      query: (paramenters={}) => {
+        paramenters = {...paramenters, q:`created:>2019-01-10`};
+        const searchParementers = new URLSearchParams(paramenters);
+        const searchParemetersString = searchParementers.toString();
+        console.log(`searchParemetersString: ${searchParemetersString}`)
+        return `search/repositories?${searchParemetersString}`; // TODO: handle with details
+    },
+
     }),
   }),
 })
-
+//q=created:>2019-01-10&sort=stars&order=desc
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
 console.log(githubApi)

@@ -27,7 +27,18 @@ const ExploreRoute = () => {
     const showDialog = () => setVisible(true);
   
     const hideDialog = () => setVisible(false);
+    const sP = {sort:"stars"};
     
+    const myURL = new URL("https://api.github.com/search/repositories");
+
+    const u = new URLSearchParams(sP);
+    console.log(u.toString())
+    for(const s in sP){
+        myURL.searchParams.set(s, sP[s])
+    }
+
+    //console.log(myURL);
+
     
     const { data, error, isLoading } = useGetGithubByNameQuery()
     console.log(data, error, isLoading);
