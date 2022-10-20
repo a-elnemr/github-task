@@ -6,9 +6,9 @@ import { useGetGithubByNameQuery } from "./src/services/github";
 
 
 
-const Home = () => {return (<Text>Home</Text>)};
+const Explore = () => {return (<Text>Explore</Text>)};
 
-const About = () => <Text>About</Text>;
+const Repos = () => <Text>Repos</Text>;
 
 const App = () => {
   const { data, error, isLoading } = useGetGithubByNameQuery()
@@ -19,15 +19,15 @@ const App = () => {
     <View style={styles.container}>
       <View style={styles.nav}>
         <Link to="/">
-          <Text>Home</Text>
+          <Text>Explore</Text>
         </Link>
-        <Link to="/about">
-          <Text>About</Text>
+        <Link to="/repos">
+          <Text>Repos</Text>
         </Link>
       </View>
 
-      <Route exact path="/" component={Home} />
-      <Route path="/about" component={About} />
+      <Route exact path="/" component={Explore} />
+      <Route path="/repos" component={Repos} />
     </View>
   </Router>
 )};
