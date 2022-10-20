@@ -64,13 +64,13 @@ const languages = [
 
 // https://github.com/collections/programming-languages
 
-const LanguageList = ({ language, setLanguage }) => {
+const LanguageListItem = ({ language, setLanguage, hideDialog }) => {
   return (
     <>
       <List.Item
-        title="Python"
+        title={language}
         onPress={() => {
-          setLanguage(10);
+          setLanguage(language);
           hideDialog();
         }}
       />
