@@ -81,19 +81,10 @@ const ReposRoute = () => {
     `${yearToday - 2}/${monthToday}/${dayToday}`
   );
 
-  console.log("formatted ", getFormatedDate(selectedDate, "YYYY-MM-DD"));
-  const formattedDate = getFormatedDate(selectedDate, "YYYY-MM-DD");
-
+  const [yearSelected, monthSelected, daySelected] = splitDate(selectedDate);
+  const formattedDate = `${yearSelected}-${monthSelected}-${daySelected}`;
   const queryObject = { language, date: formattedDate };
-
   const { data, error, isFetching } = useGetGithubByNameQuery(queryObject);
-
-  console.log(selectedDate);
-  console.log(typeof selectedDate);
-  console.log(new Date(selectedDate));
-
-  //const todayString =
-  console.log(yearToday, monthToday, dayToday);
 
   const toRender = error ? (
     <Text>Oh no, there was an error</Text>

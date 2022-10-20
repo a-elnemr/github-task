@@ -11,7 +11,8 @@ export const githubApi = createApi({
         console.log("Passed parameters", per_page, language, date);
         const languageString =
           language !== "Any" ? ` language:${language}` : "";
-        let q = `is:public${languageString}`;
+        const dateString = date !== null ? ` created:>${date}` : "";
+        let q = `is:public${languageString}${dateString}`;
         const queryParemeters = { per_page, q };
         const searchParementers = new URLSearchParams(queryParemeters);
         const searchParemetersString = searchParementers.toString();
@@ -21,12 +22,6 @@ export const githubApi = createApi({
     }),
   }),
 });
-
-/*
-  if (language !== "Any") {
-    queryObject["language"] = language;
-  }
-*/
 
 //q=created:>2019-01-10&sort=stars&order=desc
 
