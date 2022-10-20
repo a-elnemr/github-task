@@ -46,13 +46,28 @@ const styles = StyleSheet.create({
 
 import React from "react";
 import { createRoot } from "react-dom/client";
-import {
-  createBrowserRouter,
-} from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
 
+import { Outlet } from "react-router-dom";
+import Explore from "./src/routes/Explore";
 
 
+
+
+
+
+
+
+
+const MainApp = () =>{
+  return (
+    <View style={styles.container}>
+        Hi
+        <Outlet />
+    </View>
+  )
+}
 
 
 
@@ -67,13 +82,33 @@ import { RouterProvider } from "react-router-dom";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <>Explore</>,
-  },
-  {
-    path: "repos",
-    element: <>Repos</>,
+    element: <MainApp />,
   },
 ]);
+
+
+/*
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <MainApp />,
+    children: [
+      {
+        path: "about",
+        element: Home,
+      },
+      {
+        path: "repos",
+        element: About,
+      },
+    ],
+  },
+]);
+
+
+*/
+
 
 
 
@@ -87,22 +122,9 @@ const App = () =>{
 
 
 
-const MainApp = () =>{
-  return (
-    <Provider store={store}>
-      <PaperProvider>
-        <App />
-      </PaperProvider>
-    </Provider>
-  )
-}
 
 
-
-
-
-
-export default MainApp;
+export default App;
 
 
 
