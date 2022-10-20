@@ -2,7 +2,7 @@ import React from "react";
 import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
 import moment from 'moment';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import FoundationIcon from "./Icons";
+import {default as FoundationIcon} from 'react-native-vector-icons/Foundation';
 
 const ExploreCard = ({repo}) => {
   const BookIcon =(props)=> <FoundationIcon {...props} name="book-bookmark" size={30} color="#00ee00"/>;
