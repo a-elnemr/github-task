@@ -50,6 +50,15 @@ import { List, Divider } from 'react-native-paper';
 
 
 
+const languages = [
+    "Any", "JavaScript", "Python", "Java", "C++", "C", "C#", "Go", "Swift", "TypeScript", "Rust", "Kotlin", "CPython", "Julia",
+    "Ruby", "CoffeeScript", "Elixir", "PHP", "Objective-C", "R", "Matlab", "Scala", "Dart", "Lua", "Bash"
+
+]
+
+// https://github.com/collections/programming-languages
+
+
 
 
 
