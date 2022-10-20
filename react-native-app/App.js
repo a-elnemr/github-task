@@ -4,11 +4,8 @@ import { Provider } from 'react-redux';
 import { store } from "./src/app/store";
 import { useGetGithubByNameQuery } from "./src/services/github";
 
-
-
-const Explore = () => {return (<Text>Explore</Text>)};
-
-const Repos = () => <Text>Repos</Text>;
+import Explore from "./src/routes/Explore";
+import Repos from "./src/routes/Repos";
 
 const App = () => {
   const { data, error, isLoading } = useGetGithubByNameQuery()
