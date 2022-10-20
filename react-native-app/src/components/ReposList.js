@@ -5,18 +5,23 @@ import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
 
 
 
+
+
+
+
 const LeftContent = props => <Avatar.Icon {...props} icon="folder" />
 
 const RepoCard = ({repo}) => {
 
   
-  console.log(JSON.stringify(repo));
+  //console.log(JSON.stringify(repo));
 
   return (<Card style={{margin:4}}>
     <Card.Title title={repo.full_name} left={LeftContent} />
     <Card.Content>
       <Title>Card title</Title>
-      <Paragraph>Card content</Paragraph>
+      <Paragraph>{repo.description}</Paragraph>
+      <Paragraph>{repo.description}</Paragraph>
     </Card.Content>
     <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
     <Card.Actions>
@@ -29,6 +34,7 @@ const RepoCard = ({repo}) => {
 
 const ReposList = ( {repos} ) =>
 {
+  console.log (JSON.stringify(repos));
     console.log(repos);
     return repos.map((repo)=><RepoCard repo={repo} key={repo.id}/>);
 }
