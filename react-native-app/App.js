@@ -2,30 +2,35 @@ import { StyleSheet, Text, View } from "react-native";
 import { Router, Route, Link } from "./react-router";
 import { Provider } from 'react-redux';
 import { store } from "./src/app/store";
+import { useGetGithubByNameQuery } from "./src/services/github";
 
-const Home = () => <Text>Home</Text>;
+
+
+const Home = () => {return (<Text>Home</Text>)};
 
 const About = () => <Text>About</Text>;
 
-const App = () => (
-  <Provider store={store}>
-    <Router>
-      <View style={styles.container}>
-        <View style={styles.nav}>
-          <Link to="/">
-            <Text>Home</Text>
-          </Link>
-          <Link to="/about">
-            <Text>About</Text>
-          </Link>
-        </View>
+const App = () => {
+  const { data, error, isLoading } = useGetGithubByNameQuery()
+  console.log(data, error, isLoading);
 
-        <Route exact path="/" component={Home} />
-        <Route path="/about" component={About} />
+  return (
+  <Router>
+    <View style={styles.container}>
+      <View style={styles.nav}>
+        <Link to="/">
+          <Text>Home</Text>
+        </Link>
+        <Link to="/about">
+          <Text>About</Text>
+        </Link>
       </View>
-    </Router>
-  </Provider>
-);
+
+      <Route exact path="/" component={Home} />
+      <Route path="/about" component={About} />
+    </View>
+  </Router>
+)};
 
 const styles = StyleSheet.create({
   container: {
@@ -38,4 +43,20 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+
+
+
+const MainApp = () =>{
+  return (
+    <Provider store={store}>
+      <App />
+    </Provider>
+  )
+
+}
+
+
+
+
+
+export default MainApp;
