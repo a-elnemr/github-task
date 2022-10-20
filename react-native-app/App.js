@@ -3,6 +3,8 @@ import { Router, Route, Link } from "./react-router";
 import { Provider } from 'react-redux';
 import { store } from "./src/app/store";
 import { useGetGithubByNameQuery } from "./src/services/github";
+import { Provider as PaperProvider } from 'react-native-paper';
+
 
 import Explore from "./src/routes/Explore";
 import Repos from "./src/routes/Repos";
@@ -42,9 +44,11 @@ const styles = StyleSheet.create({
 
 const MainApp = () =>{
   return (
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <PaperProvider>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </PaperProvider>
   )
 
 }
