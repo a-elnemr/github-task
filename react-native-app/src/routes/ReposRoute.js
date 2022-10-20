@@ -1,13 +1,18 @@
 import DatePicker from "react-native-modern-datepicker";
 
 import React from "react";
-import { SafeAreaView, ScrollView, Text, View } from "react-native";
+import {
+  SafeAreaView,
+  ScrollView,
+  Text,
+  View,
+  ActivityIndicator,
+} from "react-native";
 import { useGetGithubByNameQuery } from "../services/github";
 import { Button, Paragraph, Dialog, Portal } from "react-native-paper";
 import ReposList from "../components/ReposList";
 
 import { List, Divider } from "react-native-paper";
-import { lang } from "moment";
 
 const languages = [
   "Any",
@@ -72,10 +77,14 @@ const ReposRoute = () => {
   //console.log(`Language is ${language}`);
   const [selectedDate, setSelectedDate] = React.useState("");
 
+  console.log(selectedDate);
+  console.log(typeof selectedDate);
+  console.log(new Date(selectedDate));
+
   const toRender = error ? (
     <Text>Oh no, there was an error</Text>
   ) : isFetching ? (
-    <Text>Loading...</Text>
+    <ActivityIndicator size="large" />
   ) : data ? (
     <ReposList repos={data.items} />
   ) : null;

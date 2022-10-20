@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Text, View, ActivityIndicator } from "react-native";
 import { useGetGithubByNameQuery } from "../services/github";
 import { Button, Paragraph, Dialog, Portal } from "react-native-paper";
 import ExploreList from "../components/ExploreList";
@@ -35,7 +35,7 @@ const ExploreRoute = () => {
   const toRender = error ? (
     <Text>Oh no, there was an error</Text>
   ) : isFetching ? (
-    <Text>Loading...</Text>
+    <ActivityIndicator size="large" />
   ) : data ? (
     <ExploreList repos={data.items} />
   ) : null;
