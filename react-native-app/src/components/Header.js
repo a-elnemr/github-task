@@ -9,7 +9,9 @@ import { Link } from "../../react-router";
 import NavLink from "./NavLink";
 import colors from "../../colors";
 
-const milangoIcon = <Feather name="message-circle" size={30} color="cyan" />;
+const milangoIcon = (
+  <Feather name="message-circle" size={30} color={colors.cyan} />
+);
 const searchIcon = (
   <FontAwesome name="search" size={25} style={{ marginLeft: 10 }} />
 );

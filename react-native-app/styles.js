@@ -10,16 +10,25 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
   },
-  navLinkActive: {
+  navLink: {
     borderWidth: 0,
     borderBottomWidth: 3,
     paddingBottom: 10,
+  },
+  navLinkActive: {
     borderColor: colors.cyan,
-    color: colors.purple,
-    fontWeight: "bold",
   },
   navLinkIdle: {
+    borderColor: colors.transparent,
+  },
+  navLinkActiveText: {
+    color: colors.purple,
+    fontWeight: "bold",
+    paddingHorizontal: 20,
+  },
+  navLinkIdleText: {
     color: colors.grey,
+    paddingHorizontal: 20,
   },
   mainBody: {},
 });
