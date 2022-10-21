@@ -8,7 +8,9 @@ import styles from "../../styles";
 import { Link } from "../../react-router";
 
 const milangoIcon = <Feather name="message-circle" size={30} color="#00ee00" />;
-const searchIcon = <FontAwesome name="search" size={25} />;
+const searchIcon = (
+  <FontAwesome name="search" size={25} style={{ marginLeft: 10 }} />
+);
 
 const Header = () => {
   const [theme, setTheme] = React.useState("dark");
@@ -27,7 +29,13 @@ const Header = () => {
 
   return (
     <View>
-      <View>
+      <View
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+        }}
+      >
         <Text
           variant="headlineMedium"
           style={{ fontWeight: "bold", color: "#7700ff" }}
@@ -35,8 +43,10 @@ const Header = () => {
         >
           {milangoIcon} milango
         </Text>
-        {themeElement}
-        {searchIcon}
+        <View style={{ display: "flex", flexDirection: "row" }}>
+          {themeElement}
+          {searchIcon}
+        </View>
       </View>
 
       <View style={styles.nav}>
