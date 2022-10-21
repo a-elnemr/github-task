@@ -9,6 +9,10 @@ import repos from "../components/repos_example";
 import { List, Divider } from "react-native-paper";
 import colors from "../../colors";
 import styles from "../../styles";
+import { TouchableRipple } from "react-native-paper";
+
+import { TouchableOpacity } from "react-native";
+
 /*
 const ExploreRouteTest = () =>{
     console.log(repos);
@@ -44,8 +48,13 @@ const ExploreRoute = () => {
   return (
     <View style={styles.mainBody}>
       <View>
-        <Text style={styles.routeTitile}>Explore polular</Text>
-        <Button onPress={showDialog}>View Top: {limit}</Button>
+        <Text style={{ ...styles.routeTitile }}>Explore polular</Text>
+        <TouchableRipple
+          onPress={showDialog}
+          style={{ alignSelf: "flex-start" }}
+        >
+          <Text>View Top: {limit}</Text>
+        </TouchableRipple>
 
         <Portal>
           <Dialog visible={visible} onDismiss={hideDialog}>
