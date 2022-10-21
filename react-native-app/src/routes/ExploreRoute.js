@@ -11,8 +11,7 @@ import colors from "../../colors";
 import styles from "../../styles";
 import { TouchableRipple } from "react-native-paper";
 
-import { TouchableOpacity } from "react-native";
-
+import { default as FontAwesome5 } from "react-native-vector-icons/FontAwesome5";
 /*
 const ExploreRouteTest = () =>{
     console.log(repos);
@@ -65,6 +64,12 @@ const ExploreRoute = () => {
             <Text style={{ fontSize: 17, fontWeight: "bold" }}>
               Top {limit}
             </Text>
+            <FontAwesome5
+              name="chevron-down"
+              size={17}
+              color={colors.black}
+              style={{ paddingLeft: 10, paddingTop: 3 }}
+            />
           </View>
         </TouchableRipple>
 
