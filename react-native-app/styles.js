@@ -4,7 +4,7 @@ import colors from "./colors";
 const styles = StyleSheet.create({
   container: {
     marginTop: 25,
-    padding: 10,
+    paddingVertical: 10,
   },
   nav: {
     flexDirection: "row",
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     color: colors.grey,
     paddingHorizontal: 20,
   },
-  mainBody: {},
+  mainBody: { backgroundColor: colors.lightestgrey, padding: 15 },
   headerTopSection: {
     display: "flex",
     flexDirection: "row",

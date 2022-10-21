@@ -7,7 +7,8 @@ import ExploreList from "../components/ExploreList";
 import repos from "../components/repos_example";
 
 import { List, Divider } from "react-native-paper";
-
+import colors from "../../colors";
+import styles from "../../styles";
 /*
 const ExploreRouteTest = () =>{
     console.log(repos);
@@ -41,7 +42,7 @@ const ExploreRoute = () => {
   ) : null;
 
   return (
-    <View>
+    <View style={styles.mainBody}>
       <View>
         <Button onPress={showDialog}>View Top: {limit}</Button>
 
