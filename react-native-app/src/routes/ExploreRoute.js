@@ -30,7 +30,7 @@ const ExploreRoute = () => {
     per_page: limit,
   });
 
-  console.log(data, error, isFetching);
+  //console.log(data, error, isFetching);
 
   const toRender = error ? (
     <Text>Oh no, there was an error</Text>

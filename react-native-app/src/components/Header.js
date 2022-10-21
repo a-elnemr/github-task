@@ -34,6 +34,7 @@ const Header = () => {
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-between",
+          marginBottom: 20,
         }}
       >
         <Text

@@ -8,7 +8,7 @@ export const githubApi = createApi({
   endpoints: (builder) => ({
     getGithubByName: builder.query({
       query: ({ per_page = 30, language = "Any", date = null } = {}) => {
-        console.log("Passed parameters", per_page, language, date);
+        //console.log("Passed parameters", per_page, language, date);
         const languageString =
           language !== "Any" ? ` language:${language}` : "";
         const dateString = date !== null ? ` created:>${date}` : "";
@@ -16,7 +16,7 @@ export const githubApi = createApi({
         const queryParemeters = { per_page, q };
         const searchParementers = new URLSearchParams(queryParemeters);
         const searchParemetersString = searchParementers.toString();
-        console.log(`searchParemetersString: ${searchParemetersString}`);
+        //console.log(`searchParemetersString: ${searchParemetersString}`);
         return `search/repositories?${searchParemetersString}`; // TODO: handle with details
       },
     }),
@@ -27,6 +27,6 @@ export const githubApi = createApi({
 
 // https://docs.github.com/en/rest/search#search-repositories
 // https://github.com/collections/programming-languages
-console.log(githubApi);
+//console.log(githubApi);
 
 export const { useGetGithubByNameQuery } = githubApi;
