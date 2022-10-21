@@ -6,6 +6,7 @@ const colors = {
   lightgrey: "lightgrey",
   lightestgrey: "#eee",
   transparent: "transparent",
+  white: "white",
 };
 
 export default colors;

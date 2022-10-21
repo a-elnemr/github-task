@@ -51,9 +51,16 @@ const ExploreRoute = () => {
         <Text style={{ ...styles.routeTitile }}>Explore polular</Text>
         <TouchableRipple
           onPress={showDialog}
-          style={{ alignSelf: "flex-start" }}
+          style={{
+            alignSelf: "flex-start",
+            backgroundColor: colors.white,
+            paddingVertical: 10,
+            paddingHorizontal: 20,
+            borderRadius: 17,
+            marginVertical: 10,
+          }}
         >
-          <Text>View Top: {limit}</Text>
+          <Text style={{ fontSize: 17 }}>View Top: {limit}</Text>
         </TouchableRipple>
 
         <Portal>
