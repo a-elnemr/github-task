@@ -7,8 +7,9 @@ import { default as Entypo } from "react-native-vector-icons/Entypo";
 import styles from "../../styles";
 import { Link } from "../../react-router";
 import NavLink from "./NavLink";
+import colors from "../../colors";
 
-const milangoIcon = <Feather name="message-circle" size={30} color="#00ee00" />;
+const milangoIcon = <Feather name="message-circle" size={30} color="cyan" />;
 const searchIcon = (
   <FontAwesome name="search" size={25} style={{ marginLeft: 10 }} />
 );
@@ -40,8 +41,7 @@ const Header = () => {
       >
         <Text
           variant="headlineMedium"
-          style={{ fontWeight: "bold", color: "#7700ff" }}
-          color="#aa00aa"
+          style={{ fontWeight: "bold", color: colors.purple }}
         >
           {milangoIcon} milango
         </Text>

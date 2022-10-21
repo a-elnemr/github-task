@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import colors from "./colors";
 
 const styles = StyleSheet.create({
   container: {
@@ -13,11 +14,14 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     borderBottomWidth: 3,
     paddingBottom: 10,
-    borderColor: "cyan",
-    color: "#7700ff",
+    borderColor: colors.cyan,
+    color: colors.purple,
     fontWeight: "bold",
   },
-  navLinkIdle: {},
+  navLinkIdle: {
+    color: colors.grey,
+  },
+  mainBody: {},
 });
 
 export default styles;
