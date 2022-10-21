@@ -4,7 +4,7 @@ import colors from "./colors";
 const styles = StyleSheet.create({
   container: {
     marginTop: 25,
-    paddingVertical: 10,
+    paddingTop: 0,
   },
   header: { paddingHorizontal: 20, paddingTop: 15 },
   nav: {
