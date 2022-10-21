@@ -18,6 +18,8 @@ import Header from "./src/components/Header";
 import ReposRoute from "./src/routes/ReposRoute";
 import ExploreRoute from "./src/routes/ExploreRoute";
 
+import styles from "./styles";
+
 const App = () => {
   return (
     <Router>
@@ -41,17 +43,6 @@ const App = () => {
     </Router>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    marginTop: 25,
-    padding: 10,
-  },
-  nav: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-  },
-});
 
 const MainApp = () => {
   return (
