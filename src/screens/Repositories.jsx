@@ -39,18 +39,18 @@ const Repositories = () => {
 
   const [date, setDate] = useState('');
   const dates = [
-    {key: '', value: 'Nothing'},
-    {key: '1', value: 'last 1 hour'},
+    {key: '', value: 'All'},
+    // {key: '1', value: 'last 1 hour'},
     {key: '2', value: 'last 2 hours'},
     {key: '3', value: 'last 3 hours'},
     {key: '4', value: 'last 4 hours'},
-    {key: '5', value: 'last 5 hours'},
-    {key: '6', value: 'last 6 hours'},
-    {key: '7', value: 'last 7 hours'},
+    // {key: '5', value: 'last 5 hours'},
+    // {key: '6', value: 'last 6 hours'},
+    // {key: '7', value: 'last 7 hours'},
     {key: '8', value: 'last 8 hours'},
     {key: '9', value: 'last 9 hours'},
     {key: '10', value: 'last 10 hours'},
-    {key: '11', value: 'last 11 hours'},
+    // {key: '11', value: 'last 11 hours'},
     {key: '12', value: 'last 12 hours'},
     {key: '13', value: 'last 13 hours'},
     {key: '14', value: 'last 14 hours'},
@@ -125,15 +125,17 @@ const Repositories = () => {
           arrowicon={<Feather name="chevron-down" size={12} color={'black'} />}
           search={false}
           boxStyles={styles.listStyle}
+          defaultOption={{key: '', value: 'All'}}
         />
         <SelectList
           setSelected={setDate}
-          placeholder="Date: "
+          placeholder="Update Date: "
           data={dates}
           onSelect={() => dispatch(DateFilter(date))}
           arrowicon={<Feather name="chevron-down" size={12} color={'black'} />}
           search={false}
           boxStyles={styles.listStyle}
+          defaultOption={{key: '', value: 'All'}}
         />
       </View>
       {isLoading ? (
