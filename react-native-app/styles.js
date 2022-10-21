@@ -31,6 +31,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   mainBody: {},
+  headerTopSection: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 20,
+  },
+  headerTopLeftSection: { fontWeight: "bold", color: colors.purple },
+  headerTopRightSection: { display: "flex", flexDirection: "row" },
 });
 
 export default styles;

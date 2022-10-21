@@ -8,6 +8,7 @@ import styles from "../../styles";
 import { Link } from "../../react-router";
 import NavLink from "./NavLink";
 import colors from "../../colors";
+import { useLocation } from "react-router-dom";
 
 const milangoIcon = (
   <Feather name="message-circle" size={30} color={colors.cyan} />
@@ -18,6 +19,11 @@ const searchIcon = (
 
 const Header = () => {
   const [theme, setTheme] = React.useState("dark");
+  let location = useLocation();
+  const currentLocation = location.pathname;
+  const isLocationExplore = currentLocation === "/" ? true : false;
+  const isLocationRepos = currentLocation === "/repos" ? true : false;
+
   const toggleTheme = () => {
     setTheme((_theme) => {
       return _theme === "dark" ? "light" : "dark";
@@ -33,29 +39,19 @@ const Header = () => {
 
   return (
     <View>
-      <View
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-          marginBottom: 20,
-        }}
-      >
-        <Text
-          variant="headlineMedium"
-          style={{ fontWeight: "bold", color: colors.purple }}
-        >
+      <View style={styles.headerTopSection}>
+        <Text variant="headlineMedium" style={styles.headerTopLeftSection}>
           {milangoIcon} milango
         </Text>
-        <View style={{ display: "flex", flexDirection: "row" }}>
+        <View style={styles.headerTopRightSection}>
           {themeElement}
           {searchIcon}
         </View>
       </View>
 
       <View style={styles.nav}>
-        <NavLink to="/" text="Explore" active={true} />
-        <NavLink to="/repos" text="Repositories" />
+        <NavLink to="/" text="Explore" active={isLocationExplore} />
+        <NavLink to="/repos" text="Repositories" active={isLocationRepos} />
         <View></View>
       </View>
     </View>
