@@ -48,6 +48,7 @@ const ExploreRoute = () => {
     <View style={styles.mainBody}>
       <View>
         <Text style={{ ...styles.routeTitile }}>Explore polular</Text>
+
         <TouchableRipple onPress={showDialog} style={styles.actionButton}>
           <View style={styles.actionButtonTextView}>
             <Text style={styles.actionButtonLeftText}>View : </Text>
