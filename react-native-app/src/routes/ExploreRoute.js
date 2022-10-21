@@ -1,9 +1,9 @@
 import React from "react";
-import { Text, View, ActivityIndicator } from "react-native";
+import { View, ActivityIndicator } from "react-native";
 import { useGetGithubByNameQuery } from "../services/github";
 import { Button, Paragraph, Dialog, Portal } from "react-native-paper";
 import ExploreList from "../components/ExploreList";
-
+import { Text } from "react-native-paper";
 import repos from "../components/repos_example";
 
 import { List, Divider } from "react-native-paper";
@@ -44,6 +44,7 @@ const ExploreRoute = () => {
   return (
     <View style={styles.mainBody}>
       <View>
+        <Text style={styles.routeTitile}>Explore polular</Text>
         <Button onPress={showDialog}>View Top: {limit}</Button>
 
         <Portal>

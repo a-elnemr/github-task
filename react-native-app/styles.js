@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
   },
   headerTopLeftSection: { fontWeight: "bold", color: colors.purple },
   headerTopRightSection: { display: "flex", flexDirection: "row" },
+  routeTitile: { fontWeight: "bold", fontSize: 25 },
 });
 
 export default styles;
