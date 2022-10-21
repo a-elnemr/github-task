@@ -22,7 +22,7 @@ const Header = () => {
 
   const themeElement =
     theme === "dark" ? (
-      <Entypo name="light-down" size={25} onPress={toggleTheme} />
+      <Entypo name="moon" size={25} onPress={toggleTheme} />
     ) : (
       <Entypo name="light-up" size={25} onPress={toggleTheme} />
     );
