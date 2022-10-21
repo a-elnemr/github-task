@@ -60,7 +60,12 @@ const ExploreRoute = () => {
             marginVertical: 10,
           }}
         >
-          <Text style={{ fontSize: 17 }}>View Top: {limit}</Text>
+          <View style={{ display: "flex", flexDirection: "row" }}>
+            <Text style={{ fontSize: 17, color: colors.grey }}>View : </Text>
+            <Text style={{ fontSize: 17, fontWeight: "bold" }}>
+              Top {limit}
+            </Text>
+          </View>
         </TouchableRipple>
 
         <Portal>
