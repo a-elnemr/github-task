@@ -26,16 +26,6 @@ const App = () => {
       <SafeAreaView style={styles.container}>
         <ScrollView style={styles.scrollView}>
           <Header />
-          <View style={styles.nav}>
-            <Link to="/">
-              <Text>Explore</Text>
-            </Link>
-            <Link to="/repos">
-              <Text>Repos</Text>
-            </Link>
-            <View></View>
-          </View>
-
           <Route exact path="/" component={ExploreRoute} />
           <Route path="/repos" component={ReposRoute} />
         </ScrollView>
