@@ -52,7 +52,7 @@ const Header = () => {
       </View>
 
       <View style={styles.nav}>
-        <NavLink to="/" text="Explore" />
+        <NavLink to="/" text="Explore" active={true} />
         <NavLink to="/repos" text="Repositories" />
         <View></View>
       </View>

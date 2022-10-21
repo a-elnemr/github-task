@@ -9,6 +9,15 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
   },
+  navLinkActive: {
+    borderWidth: 0,
+    borderBottomWidth: 3,
+    paddingBottom: 10,
+    borderColor: "cyan",
+    color: "#7700ff",
+    fontWeight: "bold",
+  },
+  navLinkIdle: {},
 });
 
 export default styles;
