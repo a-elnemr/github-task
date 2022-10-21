@@ -12,14 +12,8 @@ import styles from "../../styles";
 import { TouchableRipple } from "react-native-paper";
 
 import { default as FontAwesome5 } from "react-native-vector-icons/FontAwesome5";
-/*
-const ExploreRouteTest = () =>{
-    console.log(repos);
-    const toRender = <ExploreList repos={repos}/>;
-    return toRender;
 
-}
-*/
+import ActionButton from "../components/ActionButton";
 
 const ExploreRoute = () => {
   const [visible, setVisible] = React.useState(false);
@@ -48,20 +42,11 @@ const ExploreRoute = () => {
     <View style={styles.mainBody}>
       <View>
         <Text style={{ ...styles.routeTitile }}>Explore polular</Text>
-
-        <TouchableRipple onPress={showDialog} style={styles.actionButton}>
-          <View style={styles.actionButtonTextView}>
-            <Text style={styles.actionButtonLeftText}>View : </Text>
-            <Text style={styles.actionButtonRightText}>Top {limit}</Text>
-            <FontAwesome5
-              name="chevron-down"
-              size={17}
-              color={colors.black}
-              style={styles.actionButtonDownArrow}
-            />
-          </View>
-        </TouchableRipple>
-
+        <ActionButton
+          leftText={"View : "}
+          rightText={`Top ${limit}`}
+          onPress={showDialog}
+        />
         <Portal>
           <Dialog visible={visible} onDismiss={hideDialog}>
             <List.Item

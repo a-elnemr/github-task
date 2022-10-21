@@ -4,6 +4,8 @@ import { View } from "react-native";
 import { Text } from "react-native-paper";
 import { default as FontAwesome5 } from "react-native-vector-icons/FontAwesome5";
 import styles from "../../styles";
+import colors from "../../colors";
+
 const ActionButton = ({ onPress, leftText, rightText }) => {
   return (
     <TouchableRipple onPress={onPress} style={styles.actionButton}>
