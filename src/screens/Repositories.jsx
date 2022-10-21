@@ -125,7 +125,6 @@ const Repositories = () => {
           arrowicon={<Feather name="chevron-down" size={12} color={'black'} />}
           search={false}
           boxStyles={styles.listStyle}
-          defaultOption={{key: '', value: 'All'}}
         />
         <SelectList
           setSelected={setDate}
@@ -135,7 +134,6 @@ const Repositories = () => {
           arrowicon={<Feather name="chevron-down" size={12} color={'black'} />}
           search={false}
           boxStyles={styles.listStyle}
-          defaultOption={{key: '', value: 'All'}}
         />
       </View>
       {isLoading ? (
