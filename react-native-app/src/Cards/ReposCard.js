@@ -15,7 +15,7 @@ const ReposCard = ({ repo }) => {
   const starIcon = <Icon name="star-o" size={15} color="#00ee00" />;
 
   return (
-    <Card style={{ margin: 4 }}>
+    <Card style={{ marginVertical: 4 }}>
       <Card.Title title={repo.full_name} left={BookIcon} />
       <Card.Content>
         <Paragraph>{repo.description}</Paragraph>
