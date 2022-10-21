@@ -38,7 +38,7 @@ const Header = () => {
     );
 
   return (
-    <View>
+    <View style={styles.header}>
       <View style={styles.headerTopSection}>
         <Text variant="headlineMedium" style={styles.headerTopLeftSection}>
           {milangoIcon} milango

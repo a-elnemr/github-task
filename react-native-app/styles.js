@@ -6,14 +6,15 @@ const styles = StyleSheet.create({
     marginTop: 25,
     paddingVertical: 10,
   },
+  header: { paddingHorizontal: 20, paddingTop: 15 },
   nav: {
     flexDirection: "row",
-    justifyContent: "space-around",
   },
   navLink: {
     borderWidth: 0,
     borderBottomWidth: 3,
     paddingBottom: 10,
+    marginRight: 15,
   },
   navLinkActive: {
     borderColor: colors.cyan,
