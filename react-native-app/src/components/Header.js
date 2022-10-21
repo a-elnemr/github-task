@@ -6,6 +6,7 @@ import { default as FontAwesome } from "react-native-vector-icons/FontAwesome";
 import { default as Entypo } from "react-native-vector-icons/Entypo";
 import styles from "../../styles";
 import { Link } from "../../react-router";
+import NavLink from "./NavLink";
 
 const milangoIcon = <Feather name="message-circle" size={30} color="#00ee00" />;
 const searchIcon = (
@@ -51,12 +52,8 @@ const Header = () => {
       </View>
 
       <View style={styles.nav}>
-        <Link to="/">
-          <Text>Explore</Text>
-        </Link>
-        <Link to="/repos">
-          <Text>Repos</Text>
-        </Link>
+        <NavLink to="/" text="Explore" />
+        <NavLink to="/repos" text="Repositories" />
         <View></View>
       </View>
     </View>
