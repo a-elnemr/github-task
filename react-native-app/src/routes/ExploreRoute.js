@@ -48,27 +48,15 @@ const ExploreRoute = () => {
     <View style={styles.mainBody}>
       <View>
         <Text style={{ ...styles.routeTitile }}>Explore polular</Text>
-        <TouchableRipple
-          onPress={showDialog}
-          style={{
-            alignSelf: "flex-start",
-            backgroundColor: colors.white,
-            paddingVertical: 10,
-            paddingHorizontal: 20,
-            borderRadius: 17,
-            marginVertical: 10,
-          }}
-        >
-          <View style={{ display: "flex", flexDirection: "row" }}>
-            <Text style={{ fontSize: 17, color: colors.grey }}>View : </Text>
-            <Text style={{ fontSize: 17, fontWeight: "bold" }}>
-              Top {limit}
-            </Text>
+        <TouchableRipple onPress={showDialog} style={styles.actionButton}>
+          <View style={styles.actionButtonTextView}>
+            <Text style={styles.actionButtonLeftText}>View : </Text>
+            <Text style={styles.actionButtonRightText}>Top {limit}</Text>
             <FontAwesome5
               name="chevron-down"
               size={17}
               color={colors.black}
-              style={{ paddingLeft: 10, paddingTop: 3 }}
+              style={styles.actionButtonDownArrow}
             />
           </View>
         </TouchableRipple>

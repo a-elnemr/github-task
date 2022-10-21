@@ -41,6 +41,18 @@ const styles = StyleSheet.create({
   headerTopLeftSection: { fontWeight: "bold", color: colors.purple },
   headerTopRightSection: { display: "flex", flexDirection: "row" },
   routeTitile: { fontWeight: "bold", fontSize: 25, marginVertical: 10 },
+  actionButton: {
+    alignSelf: "flex-start",
+    backgroundColor: colors.white,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 17,
+    marginVertical: 10,
+  },
+  actionButtonTextView: { display: "flex", flexDirection: "row" },
+  actionButtonLeftText: { fontSize: 17, color: colors.grey },
+  actionButtonRightText: { fontSize: 17, fontWeight: "bold" },
+  actionButtonDownArrow: { paddingLeft: 10, paddingTop: 3 },
 });
 
 export default styles;
