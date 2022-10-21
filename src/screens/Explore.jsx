@@ -5,7 +5,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {memo, useEffect, useState} from 'react';
 import {fetchStars, lengthFilter} from '../features/topStarsSlice';
 import {useDispatch, useSelector} from 'react-redux';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -62,7 +62,9 @@ const Explore = () => {
             _____________________________________________________
           </Text>
           <View style={styles.langWrapper}>
-            <Text style={styles.langText}>Updated 12 hours ago</Text>
+            <Text style={styles.langText}>
+              last updated {new Date(item.updated_at).getHours()} hour ago
+            </Text>
             <Text style={styles.langText}>{item.language || 'C++'}</Text>
           </View>
         </View>
@@ -101,7 +103,7 @@ const Explore = () => {
   );
 };
 
-export default Explore;
+export default memo(Explore);
 
 const styles = StyleSheet.create({
   view: {

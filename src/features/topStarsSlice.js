@@ -5,8 +5,8 @@ const URL = `https://api.github.com/search/repositories?q=created:%3E2019-01-10&
 export const fetchStars = createAsyncThunk('star/fetchStars', () => {
   return fetch(URL)
     .then(res => res.json())
-    .then(({items}) => items);
-  // .catch(err => console.log(err));
+    .then(({items}) => items)
+    .catch(err => console.log(err));
 });
 
 const initialState = {
@@ -26,31 +26,29 @@ const starSlice = createSlice({
         state.favourites = state.favourites.filter(
           item => item.language === action.payload,
         );
-        console.log('lang filter', action.payload);
       } else {
         state.favourites = [...state.stars];
-        console.log('lang if nothing', action.payload);
       }
     },
     DateFilter: (state, action) => {
-      let popular = [...state.stars];
       if (action.payload !== '') {
-        console.log('date, filter', action.payload);
+        console.log('date, filter', typeof action.payload, action.payload);
+        state.favourites = [...state.stars];
+        state.favourites = state.favourites.filter(
+          item =>
+            parseInt(new Date(item.updated_at).getHours()) ==
+            parseInt(action.payload),
+        );
       } else {
-        state.stars = popular;
+        state.favourites = [...state.stars];
       }
-      // state.stars = state.stars.filter(
-      //   item => item.language === action.payload.language,
-      // );
     },
     lengthFilter: (state, action) => {
       if (action.payload !== '') {
         state.favourites = [...state.stars];
         state.favourites = state.favourites.splice(0, action.payload);
-        // console.log(state.favourites.length, 'length from array');
       } else {
         state.favourites = [...state.stars];
-        // console.log(state.favourites.length, 'length');
       }
     },
   },

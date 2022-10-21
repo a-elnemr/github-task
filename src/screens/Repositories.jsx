@@ -5,7 +5,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {memo, useEffect, useState} from 'react';
 import {DateFilter, fetchStars, LangFilter} from '../features/topStarsSlice';
 import {useDispatch, useSelector} from 'react-redux';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -24,6 +24,7 @@ const Repositories = () => {
     {key: '', value: 'All'},
     {key: 'HTML', value: 'HTML'},
     {key: 'C', value: 'C'},
+    {key: 'C++', value: 'C++'},
     {key: 'JavaScript', value: 'JavaScript'},
     {key: 'Jupyter Notebook', value: 'Jupyter Notebook'},
     {key: 'Go', value: 'Go'},
@@ -39,9 +40,26 @@ const Repositories = () => {
   const [date, setDate] = useState('');
   const dates = [
     {key: '', value: 'Nothing'},
-    {key: '1', value: 'date1'},
-    {key: '2', value: 'date2'},
-    {key: '3', value: 'date3'},
+    {key: '1', value: 'last 1 hour'},
+    {key: '2', value: 'last 2 hours'},
+    {key: '3', value: 'last 3 hours'},
+    {key: '4', value: 'last 4 hours'},
+    {key: '5', value: 'last 5 hours'},
+    {key: '6', value: 'last 6 hours'},
+    {key: '7', value: 'last 7 hours'},
+    {key: '8', value: 'last 8 hours'},
+    {key: '9', value: 'last 9 hours'},
+    {key: '10', value: 'last 10 hours'},
+    {key: '11', value: 'last 11 hours'},
+    {key: '12', value: 'last 12 hours'},
+    {key: '13', value: 'last 13 hours'},
+    {key: '14', value: 'last 14 hours'},
+    {key: '15', value: 'last 15 hours'},
+    {key: '16', value: 'last 16 hours'},
+    {key: '17', value: 'last 17 hours'},
+    {key: '18', value: 'last 18 hours'},
+    {key: '19', value: 'last 19 hours'},
+    {key: '20', value: 'last 20 hours'},
   ];
 
   useEffect(() => {
@@ -103,7 +121,7 @@ const Repositories = () => {
           setSelected={setLanguage}
           placeholder="Language:"
           data={languages}
-          onSelect={() => dispatch(LangFilter(language))}
+          onSelect={() => dispatch(LangFilter(language ?? 'C++'))}
           arrowicon={<Feather name="chevron-down" size={12} color={'black'} />}
           search={false}
           boxStyles={styles.listStyle}
@@ -112,7 +130,7 @@ const Repositories = () => {
           setSelected={setDate}
           placeholder="Date: "
           data={dates}
-          onSelect={() => date}
+          onSelect={() => dispatch(DateFilter(date))}
           arrowicon={<Feather name="chevron-down" size={12} color={'black'} />}
           search={false}
           boxStyles={styles.listStyle}
@@ -136,7 +154,7 @@ const Repositories = () => {
   );
 };
 
-export default Repositories;
+export default memo(Repositories);
 
 const styles = StyleSheet.create({
   view: {
