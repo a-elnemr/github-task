@@ -1,11 +1,12 @@
 import {
   ActivityIndicator,
   FlatList,
+  RefreshControl,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
-import React, {memo, useEffect, useState} from 'react';
+import React, {memo, useCallback, useEffect, useState} from 'react';
 import {DateFilter, fetchStars, LangFilter} from '../features/topStarsSlice';
 import {useDispatch, useSelector} from 'react-redux';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -40,26 +41,18 @@ const Repositories = () => {
   const [date, setDate] = useState('');
   const dates = [
     {key: '', value: 'All'},
-    // {key: '1', value: 'last 1 hour'},
     {key: '2', value: 'last 2 hours'},
     {key: '3', value: 'last 3 hours'},
     {key: '4', value: 'last 4 hours'},
-    // {key: '5', value: 'last 5 hours'},
-    // {key: '6', value: 'last 6 hours'},
-    // {key: '7', value: 'last 7 hours'},
     {key: '8', value: 'last 8 hours'},
     {key: '9', value: 'last 9 hours'},
     {key: '10', value: 'last 10 hours'},
-    // {key: '11', value: 'last 11 hours'},
-    {key: '12', value: 'last 12 hours'},
     {key: '13', value: 'last 13 hours'},
     {key: '14', value: 'last 14 hours'},
     {key: '15', value: 'last 15 hours'},
     {key: '16', value: 'last 16 hours'},
-    {key: '17', value: 'last 17 hours'},
     {key: '18', value: 'last 18 hours'},
     {key: '19', value: 'last 19 hours'},
-    {key: '20', value: 'last 20 hours'},
   ];
 
   useEffect(() => {
@@ -113,6 +106,16 @@ const Repositories = () => {
     );
   };
 
+  const [refreshing, setRefreshing] = useState(false);
+
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    setTimeout(() => {
+      dispatch(fetchStars());
+      setRefreshing(false);
+    }, 2000);
+  }, []);
+
   return (
     <SafeAreaView style={styles.view}>
       <Text style={styles.text}>Repository</Text>
@@ -146,6 +149,13 @@ const Repositories = () => {
           keyExtractor={(item, ind) => ind.toString()}
           renderItem={renderItem}
           style={styles.list}
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={onRefresh}
+              colors={['red', 'orange']}
+            />
+          }
         />
       ) : (
         <Text>{error}</Text>

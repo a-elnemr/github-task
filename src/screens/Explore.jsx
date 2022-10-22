@@ -1,11 +1,12 @@
 import {
   ActivityIndicator,
   FlatList,
+  RefreshControl,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
-import React, {memo, useEffect, useState} from 'react';
+import React, {memo, useCallback, useEffect, useState} from 'react';
 import {fetchStars, lengthFilter} from '../features/topStarsSlice';
 import {useDispatch, useSelector} from 'react-redux';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -72,6 +73,16 @@ const Explore = () => {
     );
   };
 
+  const [refreshing, setRefreshing] = useState(false);
+
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    setTimeout(() => {
+      dispatch(fetchStars());
+      setRefreshing(false);
+    }, 2000);
+  }, []);
+
   return (
     <SafeAreaView style={styles.view}>
       <Text style={styles.text}>Explore&nbsp; Popular</Text>
@@ -95,6 +106,13 @@ const Explore = () => {
           keyExtractor={(item, ind) => ind.toString()}
           renderItem={renderItem}
           style={styles.list}
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={onRefresh}
+              colors={['red', 'orange']}
+            />
+          }
         />
       ) : (
         <Text>{error}</Text>
