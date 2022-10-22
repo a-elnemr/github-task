@@ -24,7 +24,7 @@ const ExploreRoute = () => {
 
   const [limit, setLimit] = React.useState(10);
 
-  const { data, error, isFetching } = useGetGithubByNameQuery({
+  const { data, error, isFetching, refetch } = useGetGithubByNameQuery({
     per_page: limit,
   });
 
@@ -37,6 +37,14 @@ const ExploreRoute = () => {
   ) : data ? (
     <ExploreList repos={data.items} />
   ) : null;
+
+  const refreshButton = isFetching ? (
+    <></>
+  ) : (
+    <Button onPress={refetch}>
+      <Text>Refresh</Text>
+    </Button>
+  );
 
   return (
     <View style={styles.mainBody}>
@@ -80,6 +88,8 @@ const ExploreRoute = () => {
         </Portal>
       </View>
       {toRender}
+
+      {refreshButton}
     </View>
   );
 };
