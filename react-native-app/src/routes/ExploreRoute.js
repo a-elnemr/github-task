@@ -41,9 +41,19 @@ const ExploreRoute = () => {
   const refreshButton = isFetching ? (
     <></>
   ) : (
-    <Button onPress={refetch}>
-      <Text>Refresh</Text>
-    </Button>
+    <View style={{ alignSelf: "center" }}>
+      <Button
+        onPress={refetch}
+        buttonColor={colors.white}
+        style={{ padding: 5, marginTop: 8 }}
+      >
+        <Text
+          style={{ fontWeight: "bold", fontSize: 20, color: colors.purple }}
+        >
+          Refresh
+        </Text>
+      </Button>
+    </View>
   );
 
   return (
