@@ -87,12 +87,13 @@ const ExploreCard = ({ repo }) => {
           style={{
             display: "flex",
             flexDirection: "row",
-            justifyContent: "flex-start",
+            justifyContent: "space-between",
             paddingVertical: 8,
           }}
         >
           <Paragraph>{time_difference}</Paragraph>
           <Paragraph style={{ paddingLeft: 30 }}>{repo.language}</Paragraph>
+          <Text></Text>
         </View>
       </Card.Content>
     </Card>
