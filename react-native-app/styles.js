@@ -45,13 +45,13 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start",
     backgroundColor: colors.white,
     paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 17,
+    paddingHorizontal: 10,
+    borderRadius: 12,
     marginVertical: 10,
   },
   actionButtonTextView: { display: "flex", flexDirection: "row" },
-  actionButtonLeftText: { fontSize: 17, color: colors.grey },
-  actionButtonRightText: { fontSize: 17, fontWeight: "bold" },
+  actionButtonLeftText: { fontSize: 13, color: colors.grey },
+  actionButtonRightText: { fontSize: 13, fontWeight: "bold" },
   actionButtonDownArrow: { paddingLeft: 10, paddingTop: 3 },
 });
 

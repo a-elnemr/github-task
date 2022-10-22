@@ -16,6 +16,9 @@ import { List, Divider } from "react-native-paper";
 
 import { getToday, getFormatedDate } from "react-native-modern-datepicker";
 
+import styles from "../../styles";
+import ActionButton from "../components/ActionButton";
+
 const languages = [
   "Any",
   "JavaScript",
@@ -95,10 +98,26 @@ const ReposRoute = () => {
   ) : null;
 
   return (
-    <View>
+    <View style={styles.mainBody}>
       <View>
-        <Button onPress={showDialog}>Language: {language}</Button>
-        <Button onPress={showDatePicker}>Date: {selectedDate}</Button>
+        <View
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
+        >
+          <ActionButton
+            leftText={"Language : "}
+            rightText={language}
+            onPress={showDialog}
+          />
+          <ActionButton
+            leftText={"Date : "}
+            rightText={selectedDate}
+            onPress={showDatePicker}
+          />
+        </View>
 
         <Portal>
           <Dialog visible={visible} onDismiss={hideDialog}>
