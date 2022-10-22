@@ -38,6 +38,9 @@ npm run web
 <img src="../Media/screenshots/06.png" width="270" height="480"/>
 <img src="../Media/screenshots/07.png" width="270" height="480"/>
 <img src="../Media/screenshots/08.png" width="270" height="480"/>
+<img src="../Media/screenshots/09.png" width="270" height="480"/>
+<img src="../Media/screenshots/10.png" width="270" height="480"/>
+<img src="../Media/screenshots/11.png" width="270" height="480"/>
 
 ### TODOS:
 
