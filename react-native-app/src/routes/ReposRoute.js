@@ -18,6 +18,7 @@ import { getToday, getFormatedDate } from "react-native-modern-datepicker";
 
 import styles from "../../styles";
 import ActionButton from "../components/ActionButton";
+import RefreshButton from "../components/RefreshButton";
 
 const languages = [
   "Any",
@@ -87,7 +88,8 @@ const ReposRoute = () => {
   const [yearSelected, monthSelected, daySelected] = splitDate(selectedDate);
   const formattedDate = `${yearSelected}-${monthSelected}-${daySelected}`;
   const queryObject = { language, date: formattedDate };
-  const { data, error, isFetching } = useGetGithubByNameQuery(queryObject);
+  const { refetch, data, error, isFetching } =
+    useGetGithubByNameQuery(queryObject);
 
   const toRender = error ? (
     <Text>Oh no, there was an error</Text>
@@ -157,6 +159,7 @@ const ReposRoute = () => {
       </View>
 
       {toRender}
+      <RefreshButton isFetching={isFetching} refetch={refetch} />
     </View>
   );
 };
