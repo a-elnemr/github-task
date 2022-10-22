@@ -15,6 +15,8 @@ import { default as FontAwesome5 } from "react-native-vector-icons/FontAwesome5"
 
 import ActionButton from "../components/ActionButton";
 
+import RefreshButton from "../components/RefreshButton";
+
 const ExploreRoute = () => {
   const [visible, setVisible] = React.useState(false);
 
@@ -37,24 +39,6 @@ const ExploreRoute = () => {
   ) : data ? (
     <ExploreList repos={data.items} />
   ) : null;
-
-  const refreshButton = isFetching ? (
-    <></>
-  ) : (
-    <View style={{ alignSelf: "center" }}>
-      <Button
-        onPress={refetch}
-        buttonColor={colors.white}
-        style={{ padding: 5, marginTop: 8 }}
-      >
-        <Text
-          style={{ fontWeight: "bold", fontSize: 20, color: colors.purple }}
-        >
-          Refresh
-        </Text>
-      </Button>
-    </View>
-  );
 
   return (
     <View style={styles.mainBody}>
@@ -99,7 +83,7 @@ const ExploreRoute = () => {
       </View>
       {toRender}
 
-      {refreshButton}
+      <RefreshButton isFetching={isFetching} refetch={refetch} />
     </View>
   );
 };
