@@ -41,14 +41,13 @@ const styles = StyleSheet.create({
   headerTopLeftSection: { fontWeight: "bold", color: colors.purple },
   headerTopRightSection: { display: "flex", flexDirection: "row" },
   routeTitile: { fontWeight: "bold", fontSize: 25, marginVertical: 10 },
-  actionButton: {
+  actionButtonView: {
+    borderRadius: 10,
+    overflow: "hidden",
     alignSelf: "flex-start",
-    backgroundColor: colors.white,
-    paddingVertical: 10,
-    paddingHorizontal: 10,
-    borderRadius: 12,
     marginVertical: 10,
   },
+  actionButtonPressable: { backgroundColor: "white", borderRadius: 10 },
   actionButtonTextView: {
     display: "flex",
     flexDirection: "row",

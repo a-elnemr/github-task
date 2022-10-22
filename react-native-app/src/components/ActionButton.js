@@ -10,23 +10,14 @@ import { Pressable } from "react-native";
 
 export const ActionButton = ({ onPress, leftText, rightText }) => {
   return (
-    <View
-      style={{
-        borderRadius: 10,
-        overflow: "hidden",
-        alignSelf: "flex-start",
-        marginVertical: 10,
-      }}
-    >
+    <View style={styles.actionButtonView}>
       <Pressable
         android_ripple={{ borderless: false }}
-        style={{ backgroundColor: "white", borderRadius: 10 }}
+        style={styles.actionButtonPressable}
         onPress={onPress}
       >
         <View style={styles.actionButtonTextView}>
-          <Text style={{ ...styles.actionButtonLeftText, alignSelf: "center" }}>
-            {leftText}
-          </Text>
+          <Text style={styles.actionButtonLeftText}>{leftText}</Text>
           <Text style={styles.actionButtonRightText}>{rightText}</Text>
           <FontAwesome5
             name="chevron-down"
