@@ -6,6 +6,7 @@ import {
   Title,
   Paragraph,
   Text,
+  Divider,
 } from "react-native-paper";
 import moment from "moment";
 import Icon from "react-native-vector-icons/FontAwesome";
@@ -24,7 +25,6 @@ const ExploreCard = ({ repo }) => {
 
   return (
     <Card style={{ marginVertical: 4, borderRadius: 15 }}>
-      <Card.Title title={repo.full_name} left={BookIcon} />
       <Card.Content>
         <View
           style={{
@@ -32,6 +32,7 @@ const ExploreCard = ({ repo }) => {
             flexDirection: "row",
             justifyContent: "space-between",
             alignItems: "center",
+            paddingVertical: 8,
           }}
         >
           <Text style={{ color: colors.grey }}>Trending Repository</Text>
@@ -58,9 +59,41 @@ const ExploreCard = ({ repo }) => {
             </View>
           </View>
         </View>
-        <Paragraph>{repo.description}</Paragraph>
-        <Paragraph>{time_difference}</Paragraph>
-        <Paragraph>{repo.language}</Paragraph>
+        <View
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            gap: 30,
+            alignItems: "flex-start",
+            paddingVertical: 8,
+          }}
+        >
+          <BookIcon />
+          <Text
+            style={{
+              paddingLeft: 15,
+              fontSize: 20,
+              color: colors.purple,
+              fontWeight: "bold",
+            }}
+          >
+            {repo.full_name}
+          </Text>
+        </View>
+
+        <Paragraph style={{ paddingVertical: 8 }}>{repo.description}</Paragraph>
+        <Divider style={{ height: 2 }} />
+        <View
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "flex-start",
+            paddingVertical: 8,
+          }}
+        >
+          <Paragraph>{time_difference}</Paragraph>
+          <Paragraph style={{ paddingLeft: 30 }}>{repo.language}</Paragraph>
+        </View>
       </Card.Content>
     </Card>
   );
