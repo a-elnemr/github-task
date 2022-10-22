@@ -6,17 +6,27 @@ import { default as FontAwesome5 } from "react-native-vector-icons/FontAwesome5"
 import styles from "../../styles";
 import colors from "../../colors";
 import { TouchableWithoutFeedback } from "react-native";
+import { Pressable } from "react-native";
 
-const ActionButton = ({ onPress, leftText, rightText }) => {
+export const ActionButton = ({ onPress, leftText, rightText }) => {
   return (
-    <View style={{ marginVertical: 10, padding: 0 }}>
-      <TouchableRipple
+    <View
+      style={{
+        borderRadius: 10,
+        overflow: "hidden",
+        alignSelf: "flex-start",
+        marginVertical: 10,
+      }}
+    >
+      <Pressable
+        android_ripple={{ borderless: false }}
+        style={{ backgroundColor: "white", borderRadius: 10 }}
         onPress={onPress}
-        style={styles.actionButton}
-        android_ripple={{ color: "red", borderless: false }}
       >
         <View style={styles.actionButtonTextView}>
-          <Text style={styles.actionButtonLeftText}>{leftText}</Text>
+          <Text style={{ ...styles.actionButtonLeftText, alignSelf: "center" }}>
+            {leftText}
+          </Text>
           <Text style={styles.actionButtonRightText}>{rightText}</Text>
           <FontAwesome5
             name="chevron-down"
@@ -25,20 +35,8 @@ const ActionButton = ({ onPress, leftText, rightText }) => {
             style={styles.actionButtonDownArrow}
           />
         </View>
-      </TouchableRipple>
+      </Pressable>
     </View>
-  );
-};
-
-export const NewActionButton = ({ onPress, leftText, rightText }) => {
-  return (
-    <Button onPress={onPress} style={{}}>
-      <View style={{}}>
-        <Text style={{ color: "black" }}>{leftText}</Text>
-        <Text style={{}}>{rightText}</Text>
-        <FontAwesome5 />
-      </View>
-    </Button>
   );
 };
 
