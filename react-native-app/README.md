@@ -44,7 +44,7 @@ npm run web
 
 ### TODOS:
 
-- Upgrade the layout to match the requirements
+- Add Dark theme
 - Make pages refreshable
 
 ### Notes:
