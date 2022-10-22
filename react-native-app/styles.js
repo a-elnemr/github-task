@@ -49,10 +49,27 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     marginVertical: 10,
   },
-  actionButtonTextView: { display: "flex", flexDirection: "row" },
-  actionButtonLeftText: { fontSize: 13, color: colors.grey },
-  actionButtonRightText: { fontSize: 13, fontWeight: "bold" },
-  actionButtonDownArrow: { paddingLeft: 10, paddingTop: 3 },
+  actionButtonTextView: {
+    display: "flex",
+    flexDirection: "row",
+    alignContent: "center",
+    padding: 10,
+  },
+  actionButtonLeftText: {
+    fontSize: 13,
+    color: colors.grey,
+    alignSelf: "center",
+  },
+  actionButtonRightText: {
+    fontSize: 13,
+    fontWeight: "bold",
+    alignSelf: "center",
+  },
+  actionButtonDownArrow: {
+    paddingLeft: 10,
+    paddingTop: 3,
+    alignSelf: "center",
+  },
 });
 
 export default styles;

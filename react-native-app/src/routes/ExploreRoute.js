@@ -12,8 +12,8 @@ import styles from "../../styles";
 import { TouchableRipple } from "react-native-paper";
 
 import { default as FontAwesome5 } from "react-native-vector-icons/FontAwesome5";
-
-import ActionButton from "../components/ActionButton";
+import { Pressable } from "react-native";
+import ActionButton, { NewActionButton } from "../components/ActionButton";
 
 import RefreshButton from "../components/RefreshButton";
 
@@ -42,9 +42,42 @@ const ExploreRoute = () => {
 
   return (
     <View style={styles.mainBody}>
+      <View
+        style={{
+          borderRadius: 10,
+          overflow: "hidden",
+          alignSelf: "flex-start",
+        }}
+      >
+        <Pressable
+          android_ripple={{ color: "red", borderless: false }}
+          style={{ backgroundColor: "white", borderRadius: 10 }}
+        >
+          <View style={styles.actionButtonTextView}>
+            <Text
+              style={{ ...styles.actionButtonLeftText, alignSelf: "center" }}
+            >
+              abc
+            </Text>
+            <Text style={styles.actionButtonRightText}>efg</Text>
+            <FontAwesome5
+              name="chevron-down"
+              size={17}
+              color={colors.black}
+              style={styles.actionButtonDownArrow}
+            />
+          </View>
+        </Pressable>
+      </View>
+
       <View>
         <Text style={{ ...styles.routeTitile }}>Explore polular</Text>
         <ActionButton
+          leftText={"View : "}
+          rightText={`Top ${limit}`}
+          onPress={showDialog}
+        />
+        <NewActionButton
           leftText={"View : "}
           rightText={`Top ${limit}`}
           onPress={showDialog}
