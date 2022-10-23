@@ -1,6 +1,6 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import Logo from '../assets/images/logo.svg';
+import Logo from 'src/assets/images/logo.svg';
 const HomeScreen = () => {
   return (
     <View

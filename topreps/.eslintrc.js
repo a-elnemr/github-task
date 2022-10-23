@@ -2,6 +2,11 @@ module.exports = {
   root: true,
   extends: '@react-native-community',
   parser: '@typescript-eslint/parser',
+  settings: {
+    'import/resolver': {
+      'babel-plugin-root-import': {},
+    },
+  },
   plugins: ['@typescript-eslint'],
   overrides: [
     {
