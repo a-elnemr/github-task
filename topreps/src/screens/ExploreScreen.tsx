@@ -1,23 +1,28 @@
 import {
   ActivityIndicator,
-  FlatList,
+  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import colorPallete from 'src/assets/constants/colorPallete';
 import DownArrow from 'src/assets/images/downArrow.svg';
 import RepoTile from 'src/components/RepoTile';
+import PerPageModal from 'src/components/PerPageModal';
 
 const ExploreScreen = () => {
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(true);
-  const getReps = () => {
+  const [perPage, setPerPage] = useState(10);
+  const [modalVisible, setModalVisible] = useState(false);
+  useEffect(() => {
+    console.log(perPage);
+
     try {
       fetch(
-        'https://api.github.com/search/repositories?q=created:%3E2019-01-10&sort=stars&order=desc&per_page=10',
+        'https://api.github.com/search/repositories?q=created:%3E2019-01-10&sort=stars&order=desc&per_page=' +
+          perPage,
       )
         .then(response => response.json())
         .then(responseJson => {
@@ -28,22 +33,34 @@ const ExploreScreen = () => {
     } catch (error) {
       console.log(error);
     }
-  };
+  }, [perPage]);
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Text style={styles.pageTitle}>Explore popular</Text>
-      <TouchableOpacity onPress={() => getReps()} style={styles.filterCta}>
-        <Text style={styles.filterTitle}>View: </Text>
-        <Text style={styles.filterText}>Top 10</Text>
+      <TouchableOpacity
+        onPress={() => setModalVisible(true)}
+        style={styles.filterCta}>
+        <Text style={styles.filterTitle}>View : </Text>
+        <Text style={styles.filterText}>Top {perPage}</Text>
         <DownArrow />
       </TouchableOpacity>
+      <PerPageModal
+        modalTitle="Top Repositories"
+        onChange={setPerPage}
+        modalStatus={modalVisible}
+        toggleModal={setModalVisible}
+      />
       {loading ? (
         <ActivityIndicator size="large" />
       ) : (
-        <FlatList data={repos} renderItem={RepoTile} />
+        <>
+          {repos.map((item, index) => (
+            <RepoTile repo={item} index={index} />
+          ))}
+        </>
       )}
-    </View>
+    </ScrollView>
   );
 };
 
@@ -72,6 +89,10 @@ const styles = StyleSheet.create({
     paddingLeft: 13,
     paddingRight: 21,
     marginBottom: 14,
+    shadowColor: colorPallete.background,
+    shadowOpacity: 0.27,
+    shadowOffset: {height: 2, width: 0},
+    shadowRadius: 10,
   },
   filterTitle: {
     color: colorPallete.darkBackGround,

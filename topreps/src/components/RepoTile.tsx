@@ -4,7 +4,7 @@ import colorPallete from 'src/assets/constants/colorPallete';
 import Star from 'src/assets/images/star.svg';
 import RepoIcon from 'src/assets/images/repoIcon.svg';
 import {ShadowView} from '@dimaportenko/react-native-shadow-view';
-const RepoTile = ({item, index}: any) => {
+const RepoTile = ({repo, index}: any) => {
   return (
     <ShadowView key={index.toString()} style={styles.tileContainer}>
       <View style={styles.tileHeader}>
@@ -15,23 +15,23 @@ const RepoTile = ({item, index}: any) => {
             <Text style={styles.tileHeaderStar}>Star</Text>
           </View>
           <View style={styles.tileHeaderRateContainer}>
-            <Text style={styles.tileHeaderRate}>{item.stargazers_count}</Text>
+            <Text style={styles.tileHeaderRate}>{repo.stargazers_count}</Text>
           </View>
         </View>
       </View>
       <View style={styles.tileBody}>
         <View style={styles.tileTitle}>
           <RepoIcon />
-          <Text style={styles.tileTitleText}>{item.full_name}</Text>
+          <Text style={styles.tileTitleText}>{repo.full_name}</Text>
         </View>
         <Text style={styles.tileDescription}>
-          {item.description ?? 'No Description Available'}
+          {repo.description ?? 'No Description Available'}
         </Text>
       </View>
       <View style={styles.tileSeparator} />
       <View style={styles.tileFooter}>
         <Text style={styles.tileFooterText}>Updated 12 hours ago</Text>
-        <Text style={styles.tileFooterText}>{item.language}</Text>
+        <Text style={styles.tileFooterText}>{repo.language}</Text>
       </View>
     </ShadowView>
   );
@@ -66,10 +66,11 @@ const styles = StyleSheet.create({
   tileHeaderStarContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignrepos: 'center',
   },
   tileHeaderRight: {
     flexDirection: 'row',
+    alignItems: 'center',
   },
   tileHeaderStar: {
     fontFamily: 'Silka-Medium',
