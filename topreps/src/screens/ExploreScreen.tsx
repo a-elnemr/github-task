@@ -1,45 +1,48 @@
-import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import React from 'react';
+import {
+  ActivityIndicator,
+  FlatList,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import React, {useState} from 'react';
 import colorPallete from 'src/assets/constants/colorPallete';
 import DownArrow from 'src/assets/images/downArrow.svg';
 import RepoTile from 'src/components/RepoTile';
 
 const ExploreScreen = () => {
-  const data = [
-    {
-      title: 'novak-99/ MLPP',
-      rate: '40.5k',
-      description:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s.',
-      update: 'Updated 12 hours ago',
-      language: 'C++',
-    },
-    {
-      title: 'novak-99/ MLPP',
-      rate: '40.5k',
-      description:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s.',
-      update: 'Updated 12 hours ago',
-      language: 'C++',
-    },
-    {
-      title: 'novak-99/ MLPP',
-      rate: '40.5k',
-      description:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s.',
-      update: 'Updated 12 hours ago',
-      language: 'C++',
-    },
-  ];
+  const [repos, setRepos] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const getReps = () => {
+    try {
+      fetch(
+        'https://api.github.com/search/repositories?q=created:%3E2019-01-10&sort=stars&order=desc&per_page=10',
+      )
+        .then(response => response.json())
+        .then(responseJson => {
+          setRepos(responseJson.items);
+          setLoading(false);
+        })
+        .catch(error => console.log(error));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.pageTitle}>Explore popular</Text>
-      <TouchableOpacity style={styles.filterCta}>
+      <TouchableOpacity onPress={() => getReps()} style={styles.filterCta}>
         <Text style={styles.filterTitle}>View: </Text>
         <Text style={styles.filterText}>Top 10</Text>
         <DownArrow />
       </TouchableOpacity>
-      <FlatList data={data} renderItem={RepoTile} />
+      {loading ? (
+        <ActivityIndicator size="large" />
+      ) : (
+        <FlatList data={repos} renderItem={RepoTile} />
+      )}
     </View>
   );
 };

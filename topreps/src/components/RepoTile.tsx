@@ -3,9 +3,10 @@ import React from 'react';
 import colorPallete from 'src/assets/constants/colorPallete';
 import Star from 'src/assets/images/star.svg';
 import RepoIcon from 'src/assets/images/repoIcon.svg';
+import {ShadowView} from '@dimaportenko/react-native-shadow-view';
 const RepoTile = ({item, index}: any) => {
   return (
-    <View key={index.toString()} style={styles.tileContainer}>
+    <ShadowView key={index.toString()} style={styles.tileContainer}>
       <View style={styles.tileHeader}>
         <Text style={styles.tileHeaderText}>Trending repository</Text>
         <View style={styles.tileHeaderRight}>
@@ -14,26 +15,25 @@ const RepoTile = ({item, index}: any) => {
             <Text style={styles.tileHeaderStar}>Star</Text>
           </View>
           <View style={styles.tileHeaderRateContainer}>
-            <Text style={styles.tileHeaderRate}>40.5K</Text>
+            <Text style={styles.tileHeaderRate}>{item.stargazers_count}</Text>
           </View>
         </View>
       </View>
       <View style={styles.tileBody}>
         <View style={styles.tileTitle}>
           <RepoIcon />
-          <Text style={styles.tileTitleText}>novak-99/ MLPP</Text>
+          <Text style={styles.tileTitleText}>{item.full_name}</Text>
         </View>
         <Text style={styles.tileDescription}>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry’s.
+          {item.description ?? 'No Description Available'}
         </Text>
       </View>
       <View style={styles.tileSeparator} />
       <View style={styles.tileFooter}>
         <Text style={styles.tileFooterText}>Updated 12 hours ago</Text>
-        <Text style={styles.tileFooterText}>C++</Text>
+        <Text style={styles.tileFooterText}>{item.language}</Text>
       </View>
-    </View>
+    </ShadowView>
   );
 };
 
@@ -49,6 +49,10 @@ const styles = StyleSheet.create({
     paddingTop: 25,
     paddingBottom: 22,
     borderRadius: 13,
+    shadowColor: colorPallete.background,
+    shadowOpacity: 0.33,
+    shadowOffset: {width: 0, height: 2},
+    shadowRadius: 10,
   },
   tileHeader: {
     flexDirection: 'row',
