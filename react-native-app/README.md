@@ -45,7 +45,6 @@ npm run web
 ### TODOS:
 
 - Add Dark theme
-- Make pages refreshable
 
 ### Notes:
 
