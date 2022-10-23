@@ -36,7 +36,7 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -51,5 +51,24 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>SilkaBlack.otf</string>
+		<string>SilkaBlackItalic.otf</string>
+		<string>SilkaBold.otf</string>
+		<string>SilkaBoldItalic.otf</string>
+		<string>SilkaExtraLight.otf</string>
+		<string>SilkaExtraLightItalic.otf</string>
+		<string>SilkaLight.otf</string>
+		<string>SilkaLightItalic.otf</string>
+		<string>SilkaMedium.otf</string>
+		<string>SilkaMediumItalic.otf</string>
+		<string>SilkaRegular.otf</string>
+		<string>SilkaRegularItalic.otf</string>
+		<string>SilkaSemiBold.otf</string>
+		<string>SilkaSemiBoldItalic.otf</string>
+		<string>SilkaThin.otf</string>
+		<string>SilkaThinItalic.otf</string>
+	</array>
 </dict>
 </plist>

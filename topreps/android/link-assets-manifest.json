@@ -1,0 +1,69 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/SilkaBlack.otf",
+      "sha1": "00d63237e3592d7f2b717dff8fbc2d0563faf602"
+    },
+    {
+      "path": "src/assets/fonts/SilkaBlackItalic.otf",
+      "sha1": "52c8c0acdac81226048a9ae6c35bfc1fcd60c271"
+    },
+    {
+      "path": "src/assets/fonts/SilkaBold.otf",
+      "sha1": "1b694dddfbe6ee279cc1393d7b72c69f26a98af4"
+    },
+    {
+      "path": "src/assets/fonts/SilkaBoldItalic.otf",
+      "sha1": "3d6de494e4ab113433043d033da2ef6436121d38"
+    },
+    {
+      "path": "src/assets/fonts/SilkaExtraLight.otf",
+      "sha1": "f109b51796bfdf7237f214ae8218100cf518af96"
+    },
+    {
+      "path": "src/assets/fonts/SilkaExtraLightItalic.otf",
+      "sha1": "4621374e4a3033df17e989ae476b9fd45e4047bc"
+    },
+    {
+      "path": "src/assets/fonts/SilkaLight.otf",
+      "sha1": "0a64221d7144658f02fb95277a068f8b93b0692e"
+    },
+    {
+      "path": "src/assets/fonts/SilkaLightItalic.otf",
+      "sha1": "e647d3a2d207cde2a18aa958301ae11bc4803099"
+    },
+    {
+      "path": "src/assets/fonts/SilkaMedium.otf",
+      "sha1": "c90ae9504cc636c301667cc85599a10f0c359a8f"
+    },
+    {
+      "path": "src/assets/fonts/SilkaMediumItalic.otf",
+      "sha1": "fdd3a603fe0b826b95f75876fc203df07f612c03"
+    },
+    {
+      "path": "src/assets/fonts/SilkaRegular.otf",
+      "sha1": "9345daf65e6b712799a9ce1374272e275f0e959a"
+    },
+    {
+      "path": "src/assets/fonts/SilkaRegularItalic.otf",
+      "sha1": "2edf76e4d65c9c732fd8b175d91fa13d01921979"
+    },
+    {
+      "path": "src/assets/fonts/SilkaSemiBold.otf",
+      "sha1": "82855bdd86c99442d7d5475f14eb5a4f1b41c311"
+    },
+    {
+      "path": "src/assets/fonts/SilkaSemiBoldItalic.otf",
+      "sha1": "ced80cdb38f3db4497057bfc462cc8aa9b07c30d"
+    },
+    {
+      "path": "src/assets/fonts/SilkaThin.otf",
+      "sha1": "6fbd892184ac511817f17d428005e45f37c206a5"
+    },
+    {
+      "path": "src/assets/fonts/SilkaThinItalic.otf",
+      "sha1": "93df9837f54c848d0d83d5b234a0cbbb5d4a1eb5"
+    }
+  ]
+}
