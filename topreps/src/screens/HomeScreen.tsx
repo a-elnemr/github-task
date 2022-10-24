@@ -1,4 +1,4 @@
-import {SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, StyleSheet, View} from 'react-native';
 import React from 'react';
 import Logo from 'src/assets/images/logo.svg';
 import Search from 'src/assets/images/search.svg';
@@ -6,7 +6,7 @@ import TabStack from './Navigation/TabStack';
 import colorPallete from 'src/assets/constants/colorPallete';
 const HomeScreen = () => {
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={styles.screenContainer}>
       <View style={styles.headerContainer}>
         <Logo />
         <Search />
@@ -25,4 +25,5 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     backgroundColor: colorPallete.white,
   },
+  screenContainer: {flex: 1},
 });

@@ -1,31 +1,30 @@
 import {
-  Alert,
   Dimensions,
   Modal,
   Pressable,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import React from 'react';
 import colorPallete from 'src/assets/constants/colorPallete';
 import {ShadowView} from '@dimaportenko/react-native-shadow-view';
 import CloseIcon from 'src/assets/images/close.svg';
-const PerPageModal = ({
+import CalendarPicker from 'react-native-calendar-picker';
+import moment from 'moment';
+
+const DatePickerModal = ({
   modalTitle,
   onChange,
   modalStatus,
   toggleModal,
 }: any) => {
-  const choices = [{perPage: 10}, {perPage: 50}, {perPage: 100}];
   return (
     <View>
       <Modal
         transparent={true}
         visible={modalStatus}
         onRequestClose={() => {
-          Alert.alert('Modal has been closed.');
           toggleModal(false);
         }}>
         <View style={styles.centeredView}>
@@ -36,32 +35,32 @@ const PerPageModal = ({
                 <CloseIcon />
               </Pressable>
             </View>
-            <View>
-              {choices.map((item, index) => (
-                <Pressable
-                  key={index.toString()}
-                  onPress={() => {
-                    onChange(item.perPage);
-                    toggleModal(false);
-                  }}>
-                  <Text style={styles.choices}>{item.perPage}</Text>
-                  {index !== choices.length - 1 ? (
-                    <View style={styles.separator} />
-                  ) : null}
-                </Pressable>
-              ))}
+            <View style={styles.calendarContainer}>
+              <CalendarPicker
+                previousTitle="<"
+                previousTitleStyle={styles.previousTitleStyle}
+                nextTitle=">"
+                nextTitleStyle={styles.nextTitleStyle}
+                monthYearHeaderWrapperStyle={styles.monthYearHeaderWrapperStyle}
+                textStyle={styles.calendarTextStyle}
+                todayBackgroundColor="#00000000"
+                todayTextStyle={styles.todayTextStyle}
+                selectedDayTextStyle={styles.selectedDayTextStyle}
+                dayLabelsWrapper={styles.dayLabelWrapper}
+                onDateChange={(date: moment.MomentInput) => {
+                  onChange(moment(date).format());
+                  toggleModal(false);
+                }}
+              />
             </View>
           </ShadowView>
         </View>
       </Modal>
-      <Pressable onPress={() => toggleModal(true)}>
-        <Text>Show Modal</Text>
-      </Pressable>
     </View>
   );
 };
 
-export default PerPageModal;
+export default DatePickerModal;
 
 const styles = StyleSheet.create({
   centeredView: {
@@ -105,5 +104,39 @@ const styles = StyleSheet.create({
     height: 1,
     opacity: 0.37,
     width: '100%',
+  },
+  calendarContainer: {
+    borderTopColor: colorPallete.background,
+    borderTopWidth: 1,
+    marginTop: 10,
+    paddingTop: 5,
+  },
+  previousTitleStyle: {
+    left: Dimensions.get('window').width - 100,
+    fontSize: 16,
+    color: colorPallete.secondary,
+  },
+  nextTitleStyle: {
+    right: 30,
+    fontSize: 16,
+    color: colorPallete.secondary,
+  },
+  monthYearHeaderWrapperStyle: {
+    right: '25%',
+    alignSelf: 'flex-start',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+  },
+  calendarTextStyle: {
+    fontFamily: 'Silka',
+  },
+  todayTextStyle: {color: 'black'},
+  selectedDayTextStyle: {
+    color: colorPallete.primary,
+  },
+  dayLabelWrapper: {
+    borderTopWidth: 0,
+    borderBottomWidth: 0,
+    color: colorPallete.background,
   },
 });

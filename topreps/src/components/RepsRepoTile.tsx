@@ -2,45 +2,36 @@ import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import colorPallete from 'src/assets/constants/colorPallete';
 import Star from 'src/assets/images/star.svg';
+import Fork from 'src/assets/images/fork.svg';
 import RepoIcon from 'src/assets/images/repoIcon.svg';
 import {ShadowView} from '@dimaportenko/react-native-shadow-view';
-import moment from 'moment';
-const RepoTile = ({repo}: any) => {
+const RepsRepoTile = ({repo}: any) => {
   return (
     <ShadowView style={styles.tileContainer}>
-      <View style={styles.tileHeader}>
-        <Text style={styles.tileHeaderText}>Trending repository</Text>
-        <View style={styles.tileHeaderRight}>
-          <View style={styles.tileHeaderStarContainer}>
-            <Star />
-            <Text style={styles.tileHeaderStar}>Star</Text>
-          </View>
-          <View style={styles.tileHeaderRateContainer}>
-            <Text style={styles.tileHeaderRate}>{repo.stargazers_count}</Text>
-          </View>
-        </View>
+      <View style={styles.tileTitle}>
+        <RepoIcon />
+        <Text style={styles.tileTitleText}>{repo.full_name}</Text>
       </View>
-      <View style={styles.tileBody}>
-        <View style={styles.tileTitle}>
-          <RepoIcon />
-          <Text style={styles.tileTitleText}>{repo.full_name}</Text>
-        </View>
-        <Text style={styles.tileDescription}>
-          {repo.description ?? 'No Description Available'}
-        </Text>
-      </View>
+      <Text style={styles.tileDescription}>
+        {repo.description ?? 'No Description Available'}
+      </Text>
       <View style={styles.tileSeparator} />
       <View style={styles.tileFooter}>
-        <Text style={styles.tileFooterText}>
-          updated {moment(repo.updated_at).fromNow()}
-        </Text>
         <Text style={styles.tileFooterText}>{repo.language}</Text>
+        <View style={styles.footerItemContainer}>
+          <Star />
+          <Text style={styles.tileFooterText}>{repo.stargazers_count}</Text>
+        </View>
+        <View style={styles.footerItemContainer}>
+          <Fork />
+          <Text style={styles.tileFooterText}>{repo.forks_count}</Text>
+        </View>
       </View>
     </ShadowView>
   );
 };
 
-export default RepoTile;
+export default RepsRepoTile;
 
 const styles = StyleSheet.create({
   tileContainer: {
@@ -49,8 +40,7 @@ const styles = StyleSheet.create({
     backgroundColor: colorPallete.white,
     width: '100%',
     paddingHorizontal: 18,
-    paddingTop: 25,
-    paddingBottom: 22,
+    paddingBottom: 10,
     borderRadius: 13,
     shadowColor: colorPallete.background,
     shadowOpacity: 0.33,
@@ -94,7 +84,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Silka-Medium',
     fontSize: 12,
   },
-  tileBody: {},
   tileTitle: {
     flexDirection: 'row',
     marginVertical: 18,
@@ -118,13 +107,14 @@ const styles = StyleSheet.create({
     marginBottom: 17.5,
   },
   tileFooter: {
-    marginTop: 17.5,
-    // marginBottom: 12,
+    alignItems: 'center',
     flexDirection: 'row',
   },
   tileFooterText: {
+    marginHorizontal: 10,
     fontFamily: 'Silka-Regular',
     fontSize: 12,
-    marginRight: 44,
+    textAlignVertical: 'center',
   },
+  footerItemContainer: {flexDirection: 'row', marginHorizontal: 10},
 });

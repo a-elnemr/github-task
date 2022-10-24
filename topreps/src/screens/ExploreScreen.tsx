@@ -9,16 +9,16 @@ import React, {useEffect, useState} from 'react';
 import colorPallete from 'src/assets/constants/colorPallete';
 import DownArrow from 'src/assets/images/downArrow.svg';
 import RepoTile from 'src/components/RepoTile';
-import PerPageModal from 'src/components/PerPageModal';
+import PickerModal from 'src/components/PickerModal';
 
 const ExploreScreen = () => {
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [perPage, setPerPage] = useState(10);
   const [modalVisible, setModalVisible] = useState(false);
-  useEffect(() => {
-    console.log(perPage);
+  const choices = [{value: 10}, {value: 50}, {value: 100}];
 
+  useEffect(() => {
     try {
       fetch(
         'https://api.github.com/search/repositories?q=created:%3E2019-01-10&sort=stars&order=desc&per_page=' +
@@ -45,18 +45,19 @@ const ExploreScreen = () => {
         <Text style={styles.filterText}>Top {perPage}</Text>
         <DownArrow />
       </TouchableOpacity>
-      <PerPageModal
+      <PickerModal
         modalTitle="Top Repositories"
         onChange={setPerPage}
         modalStatus={modalVisible}
         toggleModal={setModalVisible}
+        choices={choices}
       />
       {loading ? (
         <ActivityIndicator size="large" />
       ) : (
         <>
           {repos.map((item, index) => (
-            <RepoTile repo={item} index={index} />
+            <RepoTile key={index.toString()} repo={item} />
           ))}
         </>
       )}

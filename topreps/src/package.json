@@ -1,3 +1,6 @@
 {
-  "name": "src"
+  "name": "src",
+  "devDependencies": {
+    "@types/react-native-calendar-picker": "^7.0.2"
+  }
 }
