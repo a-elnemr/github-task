@@ -10,26 +10,23 @@ import colorPallete from 'src/assets/constants/colorPallete';
 import DownArrow from 'src/assets/images/downArrow.svg';
 import RepoTile from 'src/components/RepoTile';
 import PickerModal from 'src/components/PickerModal';
+import {fetchDataForExplorer} from 'src/helpers/helpers';
 
+export const languagesChoices = [{value: 10}, {value: 50}, {value: 100}];
 const ExploreScreen = () => {
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [perPage, setPerPage] = useState(10);
   const [modalVisible, setModalVisible] = useState(false);
-  const choices = [{value: 10}, {value: 50}, {value: 100}];
 
   useEffect(() => {
     try {
-      fetch(
-        'https://api.github.com/search/repositories?q=created:%3E2019-01-10&sort=stars&order=desc&per_page=' +
-          perPage,
-      )
+      fetchDataForExplorer(perPage)
         .then(response => response.json())
         .then(responseJson => {
           setRepos(responseJson.items);
           setLoading(false);
-        })
-        .catch(error => console.log(error));
+        });
     } catch (error) {
       console.log(error);
     }
@@ -50,7 +47,7 @@ const ExploreScreen = () => {
         onChange={setPerPage}
         modalStatus={modalVisible}
         toggleModal={setModalVisible}
-        choices={choices}
+        choices={languagesChoices}
       />
       {loading ? (
         <ActivityIndicator size="large" />
