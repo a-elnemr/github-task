@@ -1,0 +1,1 @@
+export * from './use-trending-repositories.hook'
