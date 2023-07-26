@@ -23,7 +23,7 @@ import {
 } from 'react-native';
 import Header from './components/Header';
 import Filter from './componentShared/Filter';
-import {store} from './store/index';
+import store from './redux/store';
 import Explore from './screens/Explore';
 import Repositories from './screens/Repositories';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';

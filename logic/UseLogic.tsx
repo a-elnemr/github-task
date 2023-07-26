@@ -2,7 +2,16 @@ import {StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
 import {useFocusEffect} from '@react-navigation/native';
 import ReposInterface from '../interfaces/ReposInterface';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {
+  fetchCardsData,
+  resetCardStateAction,
+  setDataAction,
+  setErrorAction,
+  setLoadingAction,
+  setMaxAction,
+  setRefreshingAction,
+} from '../redux/Cards/CardsActions';
 
 type Props = {
   type: 'repo' | 'explore';
@@ -15,19 +24,22 @@ const UseLogic = (props: Props) => {
   let DatefilterValue = useSelector(
     (state: any) => state.filters.DateFilterValue,
   );
+  let dataValue = useSelector((state: any) => state.cards.data);
+  let loading = useSelector((state: any) => state.cards.loading);
+  let error = useSelector((state: any) => state.cards.error);
+  let isRefreshing = useSelector((state: any) => state.cards.refreshing);
+  let max = useSelector((state: any) => state.cards.max);
+
   let filterValue = useSelector((state: any) => state.filters.viewFilterValue);
   let [page, setPage] = useState(1);
-  let [dataValue, setData] = useState<ReposInterface[]>([]);
-  let [loading, setLoading] = useState(false);
-  let [error, setError] = useState(false);
   let [firstLoad, setFirstLoad] = useState(true);
-  let [max, setMax] = useState(false);
-  let [isRefreshing, setIsRefreshing] = useState(false);
   const [EndReached, setEndReached] = useState(false);
+
+  const dispatch = useDispatch();
 
   //To handle page refresh
   function Refresh() {
-    setIsRefreshing(true);
+    dispatch(setRefreshingAction(true));
     handleReset('Full');
   }
 
@@ -35,14 +47,14 @@ const UseLogic = (props: Props) => {
   //Full is after we change the filters
   function handleReset(state: 'Full' | 'Partial') {
     if (state === 'Partial') {
-      setMax(false);
-      setIsRefreshing(false);
-      setError(false);
-      setLoading(false);
+      dispatch(setMaxAction(false));
+      dispatch(setRefreshingAction(true));
+      dispatch(setErrorAction(false));
+      dispatch(setLoadingAction(false));
     }
 
     if (state === 'Full') {
-      setData([]);
+      dispatch(setDataAction([]));
       setPage(0);
     }
   }
@@ -54,13 +66,19 @@ const UseLogic = (props: Props) => {
     */
   function handlePage() {
     console.log('I AM HANDLING PAGE');
-
     if (props.type === 'explore') {
       if (filterValue === dataValue.length) {
         return;
       }
     }
     if (max || loading || error || dataValue.length === 0) {
+      console.log('//////////////////////////');
+      console.log(max);
+      console.log(loading);
+      console.log(error);
+      console.log(dataValue.length);
+      console.log('//////////////////////////');
+
       return;
     } else {
       console.log(
@@ -70,48 +88,33 @@ const UseLogic = (props: Props) => {
     }
   }
 
-  function GitDataIsEmpty() {
-    setMax(true);
-    setLoading(false);
-  }
-
-  function FetchSuccess(dataJson: any) {
-    console.log('I AM FETCHINGGGGGGGGG SUCCESSFULLY');
-    setData(prev => [...prev, ...dataJson.items]);
-    handleReset('Partial');
-  }
-
-  function FetchFailed() {
-    setError(true);
-    setLoading(false);
-    setIsRefreshing(false);
-  }
-
-  async function FetchData() {
+  function FetchData() {
     console.log('I AM FETCHINGGGGGGGGG');
-    try {
-      setLoading(true);
-
-      let data;
-      if (props.type === 'explore') {
-        data = await fetch(
+    if (props.type === 'explore') {
+      dispatch(
+        //@ts-ignore
+        fetchCardsData(
           `https://api.github.com/search/repositories?q=Q&sort=stars&per_page=10&page=${page}`,
-        );
-      } else {
-        data = await fetch(
+        ),
+      );
+    } else {
+      dispatch(
+        //@ts-ignore
+        fetchCardsData(
           `https://api.github.com/search/repositories?q=created:>${DatefilterValue}+language:${LangfilterValue}&sort=stars&order=desc&per_page=10&page=${page}`,
-        );
-      }
-      let dataJson = await data.json();
-      if (dataJson.items.length === 0) {
-        GitDataIsEmpty();
-        return;
-      }
-      FetchSuccess(dataJson);
-    } catch (err) {
-      FetchFailed();
+        ),
+      );
     }
   }
+
+  useFocusEffect(
+    React.useCallback(() => {
+      return () => {
+        console.log(' cleaning up');
+        dispatch(resetCardStateAction());
+      };
+    }, []),
+  );
 
   useFocusEffect(
     React.useCallback(() => {
