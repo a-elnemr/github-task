@@ -65,31 +65,19 @@ const UseLogic = (props: Props) => {
      with timer.
     */
   function handlePage() {
-    console.log('I AM HANDLING PAGE');
     if (props.type === 'explore') {
       if (filterValue === dataValue.length) {
         return;
       }
     }
     if (max || loading || error || dataValue.length === 0) {
-      console.log('//////////////////////////');
-      console.log(max);
-      console.log(loading);
-      console.log(error);
-      console.log(dataValue.length);
-      console.log('//////////////////////////');
-
       return;
     } else {
-      console.log(
-        'PAGE WILL BE INCREASED FROM ' + page + ' TO ' + (page + 1) + '',
-      );
       setPage(page + 1);
     }
   }
 
   function FetchData() {
-    console.log('I AM FETCHINGGGGGGGGG');
     if (props.type === 'explore') {
       dispatch(
         //@ts-ignore
@@ -110,7 +98,6 @@ const UseLogic = (props: Props) => {
   useFocusEffect(
     React.useCallback(() => {
       return () => {
-        console.log(' cleaning up');
         dispatch(resetCardStateAction());
       };
     }, []),

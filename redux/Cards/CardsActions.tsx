@@ -49,17 +49,13 @@ const setMaxAction = (value: boolean) => ({
 });
 
 const fetchCardsData = (ApiRoute: string) => {
-  console.log('I AM FETCHINGGGGGG');
   return async (dispatch: any) => {
     dispatch(getCardsAction());
 
     try {
       let res = await fetch(ApiRoute);
       let data = await res.json();
-      console.log('//////////////////////////////////');
-      console.log(ApiRoute);
-      console.log(data.items.length);
-      console.log('//////////////////////////////////');
+
       dispatch(getCardsSuccessAction(data.items));
       if (data.items.length === 0) {
         dispatch(setMaxAction(true));
