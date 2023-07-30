@@ -53,8 +53,6 @@ const UseLogic = (props: Props) => {
      with timer.
     */
   function handlePage() {
-    console.log('I AM HANDLING PAGE');
-
     if (props.type === 'explore') {
       if (filterValue === dataValue.length) {
         return;
@@ -63,9 +61,6 @@ const UseLogic = (props: Props) => {
     if (max || loading || error || dataValue.length === 0) {
       return;
     } else {
-      console.log(
-        'PAGE WILL BE INCREASED FROM ' + page + ' TO ' + (page + 1) + '',
-      );
       setPage(page + 1);
     }
   }
@@ -76,7 +71,6 @@ const UseLogic = (props: Props) => {
   }
 
   function FetchSuccess(dataJson: any) {
-    console.log('I AM FETCHINGGGGGGGGG SUCCESSFULLY');
     setData(prev => [...prev, ...dataJson.items]);
     handleReset('Partial');
   }
@@ -88,7 +82,6 @@ const UseLogic = (props: Props) => {
   }
 
   async function FetchData() {
-    console.log('I AM FETCHINGGGGGGGGG');
     try {
       setLoading(true);
 
