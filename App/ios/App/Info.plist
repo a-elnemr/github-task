@@ -26,14 +26,13 @@
 	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
-	  <!-- Do not change NSAllowsArbitraryLoads to true, or you will risk app rejection! -->
 		<key>NSAllowsArbitraryLoads</key>
 		<false/>
 		<key>NSAllowsLocalNetworking</key>
 		<true/>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -48,5 +47,24 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Silka Black Italic.otf</string>
+		<string>Silka Black.otf</string>
+		<string>Silka Bold Italic.otf</string>
+		<string>Silka Bold.otf</string>
+		<string>Silka Extra Light Italic.otf</string>
+		<string>Silka Extra Light.otf</string>
+		<string>Silka Light Italic.otf</string>
+		<string>Silka Light.otf</string>
+		<string>Silka Medium Italic.otf</string>
+		<string>Silka Medium.otf</string>
+		<string>Silka Regular Italic.otf</string>
+		<string>Silka Regular.otf</string>
+		<string>Silka SemiBold Italic.otf</string>
+		<string>Silka SemiBold.otf</string>
+		<string>Silka Thin Italic.otf</string>
+		<string>Silka Thin.otf</string>
+	</array>
 </dict>
 </plist>
