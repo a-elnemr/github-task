@@ -11,11 +11,11 @@ const TabNavigator = () => {
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarLabelStyle: {fontSize: 11, fontFamily: 'Silka'},
-        tabBarItemStyle: {width: 130},
+        tabBarLabelStyle: {fontSize: 11, fontFamily: 'Silka Medium'},
+        tabBarItemStyle: {width: 130, paddingLeft: 0},
         tabBarIndicatorStyle: {
           backgroundColor: colors.cyan,
-          width: '40%',
+          width: '35%',
           marginLeft: '6%',
         },
 

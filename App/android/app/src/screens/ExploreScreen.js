@@ -2,6 +2,7 @@ import React from 'react';
 import {View, StyleSheet, Text} from 'react-native';
 import {useSelector} from 'react-redux';
 import colors from '../config/color';
+import ScreenTitle from '../components/ScreenTitle';
 
 function ExploreScreen(props) {
   const darkMode = useSelector(state => state.theme.darkMode);
@@ -10,7 +11,7 @@ function ExploreScreen(props) {
       style={
         darkMode ? [styles.container, styles.darkContainer] : styles.container
       }>
-      <Text>hhh</Text>
+      <ScreenTitle title="Explore Popular" />
     </View>
   );
 }
@@ -18,7 +19,7 @@ function ExploreScreen(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.white,
+    backgroundColor: colors.lightGray,
   },
   darkContainer: {
     backgroundColor: colors.darker,
