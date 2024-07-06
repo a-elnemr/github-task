@@ -3,7 +3,8 @@ const colors = {
   cyan: '#53c6a9',
   black: 'black',
   grey: '#7B848D',
-
+  dark: '#161B21',
+  darker: '#0D1116',
   white: 'white',
 };
 

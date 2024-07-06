@@ -1,9 +1,15 @@
 import React from 'react';
 import {View, StyleSheet, Text} from 'react-native';
+import {useSelector} from 'react-redux';
+import colors from '../config/color';
 
 function ExploreScreen(props) {
+  const darkMode = useSelector(state => state.theme.darkMode);
   return (
-    <View style={styles.container}>
+    <View
+      style={
+        darkMode ? [styles.container, styles.darkContainer] : styles.container
+      }>
       <Text>hhh</Text>
     </View>
   );
@@ -11,8 +17,11 @@ function ExploreScreen(props) {
 
 const styles = StyleSheet.create({
   container: {
-    height: 600,
-    backgroundColor: 'blue',
+    flex: 1,
+    backgroundColor: colors.white,
+  },
+  darkContainer: {
+    backgroundColor: colors.darker,
   },
 });
 

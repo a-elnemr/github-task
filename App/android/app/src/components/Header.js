@@ -1,28 +1,45 @@
-import React from 'react';
-import {View, StyleSheet, Image, Text} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {View, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import colors from '../config/color';
 import Icon from 'react-native-vector-icons/Ionicons';
-import TabNavigator from '../navigation/TabNavigator';
+import {useSelector, useDispatch} from 'react-redux';
+import {toggleDarkMode} from '../redux/actions/Actions';
 
-function Header(props) {
+function Header({}) {
+  const darkMode = useSelector(state => state.theme.darkMode);
+  const dispatch = useDispatch();
+
+  const handleToggle = () => {
+    dispatch(toggleDarkMode());
+  };
   return (
-    <View style={styles.headerContainer}>
+    <View
+      style={[
+        styles.defaultHeaderContainer,
+        {backgroundColor: darkMode ? colors.dark : colors.white},
+      ]}>
       <View style={styles.topHeaderView}>
         <View style={styles.imageContainer}>
           <Image
             style={styles.Image}
-            source={require('../assets/pics/darklogo.png')}
+            source={
+              darkMode
+                ? require('../assets/pics/lightlogo.png')
+                : require('../assets/pics/darklogo.png')
+            }
           />
         </View>
 
         <View style={styles.iconsContainer}>
-          <Icon
-            name="sunny"
-            size={28}
-            color={colors.black}
-            style={styles.sunIcon}
-          />
-          <Icon name="search" size={28} color={colors.black} />
+          <TouchableOpacity onPress={handleToggle}>
+            <Icon
+              name={darkMode ? 'moon' : 'sunny'}
+              size={24}
+              color={darkMode ? 'white' : 'black'}
+              style={styles.sunIcon}
+            />
+          </TouchableOpacity>
+          <Icon name="search" size={28} color={darkMode ? 'white' : 'black'} />
         </View>
       </View>
     </View>
@@ -30,12 +47,13 @@ function Header(props) {
 }
 
 const styles = StyleSheet.create({
-  headerContainer: {
+  defaultHeaderContainer: {
     height: 90,
     paddingTop: 10,
     paddingHorizontal: 25,
     backgroundColor: colors.white,
   },
+
   topHeaderView: {
     flexDirection: 'row',
     flex: 1,
