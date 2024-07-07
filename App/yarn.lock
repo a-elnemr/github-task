@@ -2923,6 +2923,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native-picker/picker@npm:^2.7.7":
+  version: 2.7.7
+  resolution: "@react-native-picker/picker@npm:2.7.7"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 54e38c47ca07e70586789bbabe1a57c4e30f1cd071c0d7a7a113dc65ecb10e84bacae93c0445513351e2c41a6a86f880389bdd468f2572dbf1fdbb690a444c93
+  languageName: node
+  linkType: hard
+
 "@react-native/assets-registry@npm:0.74.85":
   version: 0.74.85
   resolution: "@react-native/assets-registry@npm:0.74.85"
@@ -4382,6 +4392,7 @@ __metadata:
     "@babel/core": ^7.20.0
     "@babel/preset-env": ^7.20.0
     "@babel/runtime": ^7.20.0
+    "@react-native-picker/picker": ^2.7.7
     "@react-native/babel-preset": 0.74.85
     "@react-native/eslint-config": 0.74.85
     "@react-native/metro-config": 0.74.85
@@ -4393,10 +4404,12 @@ __metadata:
     babel-jest: ^29.6.3
     eslint: ^8.19.0
     jest: ^29.6.3
+    moment: ^2.30.1
     prettier: 2.8.8
     react: 18.2.0
     react-dom: ^18.3.1
     react-native: 0.74.3
+    react-native-dropdown-picker: ^5.4.6
     react-native-pager-view: ^6.3.3
     react-native-tab-view: ^3.5.2
     react-native-vector-icons: ^10.1.0
@@ -4405,6 +4418,7 @@ __metadata:
     react-scripts: ^5.0.1
     react-test-renderer: 18.2.0
     redux: ^5.0.1
+    redux-thunk: ^3.1.0
     typescript: 5.0.4
   languageName: unknown
   linkType: soft
@@ -11737,6 +11751,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"moment@npm:^2.30.1":
+  version: 2.30.1
+  resolution: "moment@npm:2.30.1"
+  checksum: 859236bab1e88c3e5802afcf797fc801acdbd0ee509d34ea3df6eea21eb6bcc2abd4ae4e4e64aa7c986aa6cba563c6e62806218e6412a765010712e5fa121ba6
+  languageName: node
+  linkType: hard
+
 "ms@npm:2.0.0":
   version: 2.0.0
   resolution: "ms@npm:2.0.0"
@@ -13752,6 +13773,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-dropdown-picker@npm:^5.4.6":
+  version: 5.4.6
+  resolution: "react-native-dropdown-picker@npm:5.4.6"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: d81ee3d68c17107a4d21dbdf9c2fe2ffe4bf4398973d10113139aadc0674221ce5038b945299fba2abc796930ec5e6d5f84291945bf903344493a15b8e2fca43
+  languageName: node
+  linkType: hard
+
 "react-native-pager-view@npm:^6.3.3":
   version: 6.3.3
   resolution: "react-native-pager-view@npm:6.3.3"
@@ -14065,6 +14096,15 @@ __metadata:
   dependencies:
     minimatch: ^3.0.5
   checksum: 88ec96e276237290607edc0872b4f9842837b95cfde0cdbb1e00ba9623dfdf3514d44cdd14496ab60a0c2dd180a6ef8a3f1c34599e6cf2273afac9b72a6fb2b5
+  languageName: node
+  linkType: hard
+
+"redux-thunk@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "redux-thunk@npm:3.1.0"
+  peerDependencies:
+    redux: ^5.0.0
+  checksum: bea96f8233975aad4c9f24ca1ffd08ac7ec91eaefc26e7ba9935544dc55d7f09ba2aa726676dab53dc79d0c91e8071f9729cddfea927f4c41839757d2ade0f50
   languageName: node
   linkType: hard
 
