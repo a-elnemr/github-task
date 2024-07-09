@@ -1,49 +1,79 @@
-# How to submit your challenge?
+This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-- Before starting on the task, make sure that all the points are clear to you. (You can reply on the email with yours questions)
-- Create a new branch and push your commits to as you would do in a real-world task.
-- Issue a Pull Request, reply to the task email with repository link to confirm you already finished the task.
+# Getting Started
 
-# GitHub Top Stars
+>**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
-The idea of this project is to implement a solution for discovering popular repositories on GitHub.
+## Step 1: Start the Metro Server
 
-## Service Specification
+First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
 
-The service should be able to provide:
+To start Metro, run the following command from the _root_ of your React Native project:
 
-- A list of the most popular repositories, sorted by number of stars.
-- An option to be able to view the top 10, 50, 100 repositories should be available.
-- Given a date, the most popular repositories created from this date onwards should be returned.
-- A filter for the programming language.
-- Big plus: design this service to be able to handle great load of requests per second
-- Add theming feature for convert the design to dark or light mode
+```bash
+# using npm
+npm start
 
-## Implementation Details
+# OR using Yarn
+yarn start
+```
 
-GitHub provides a public search endpoint which you can use for fetching the most popular repositories: [https://api.github.com/search/repositories?q=created:>2019-01-10&sort=stars&order=desc](https://api.github.com/search/repositories?q=created:%3E2019-01-10&sort=stars&order=desc).
+## Step 2: Start your Application
 
-- Feel free to use any other endpoints, if you wish.
-- Should use ReactNative CLI
-- Should use Redux _not Redux ToolKit_ for state managment and for calling the endpoints
-- Should use React Navigation
-  
+Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
 
-## UI Design
-[XD Files](https://drive.google.com/file/d/1v3hMX5awOcYY3eULlXMrWUWAYqWaBbJy/view?usp=sharing).
+### For Android
 
-## Solution evaluation
+```bash
+# using npm
+npm run android
 
-Your solution will be evaluated corresponding to these points:
+# OR using Yarn
+yarn android
+```
 
-- The solution should have a CLI application.
-- Automated tests.
-- Scalability and performance.
-- Concise and clean code.
-- Include a readme file for how to run and use the solution.
+### For iOS
 
-NOTE: This challenge is aimed to senior developers, so expected to hit a high point of technicality.
+```bash
+# using npm
+npm run ios
 
-Good Luck;
+# OR using Yarn
+yarn ios
+```
 
-Milango Team
+If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+
+This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+
+## Step 3: Modifying your App
+
+Now that you have successfully run the app, let's modify it.
+
+1. Open `App.tsx` in your text editor of choice and edit some lines.
+2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+
+   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+
+## Congratulations! :tada:
+
+You've successfully run and modified your React Native App. :partying_face:
+
+### Now what?
+
+- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
+- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+
+# Troubleshooting
+
+If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+
+# Learn More
+
+To learn more about React Native, take a look at the following resources:
+
+- [React Native Website](https://reactnative.dev) - learn more about React Native.
+- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
+- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
+- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
+- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
