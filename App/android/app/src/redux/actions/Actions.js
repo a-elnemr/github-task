@@ -4,6 +4,8 @@ import {
   GET_REPOS_SUCCESS,
   REQUEST_REPOS,
   SET_PICKER_VALUE,
+  SET_REPOS_LANGUAGE,
+  SET_SELECTED_DATE,
 } from '../constants/ActionsTypes';
 
 export const toggleDarkMode = () => ({
@@ -22,6 +24,14 @@ export const getReposFaluer = error => ({
 });
 export const setPickerValue = value => ({
   type: SET_PICKER_VALUE,
+  payload: value,
+});
+export const setReposLanguages = value => ({
+  type: SET_REPOS_LANGUAGE,
+  payload: value,
+});
+export const setSelectedDate = value => ({
+  type: SET_SELECTED_DATE,
   payload: value,
 });
 export const fetchRepos = () => {
