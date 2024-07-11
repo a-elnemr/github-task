@@ -25,7 +25,7 @@ function ScreenTitle({title}) {
 const styles = StyleSheet.create({
   lightContainer: {
     paddingVertical: 35,
-    paddingHorizontal: 25,
+    paddingHorizontal: 20,
     backgroundColor: colors.lightGray,
   },
   darkContainer: {

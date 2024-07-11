@@ -12,7 +12,7 @@ const TabNavigator = () => {
     <Tab.Navigator
       screenOptions={{
         tabBarLabelStyle: {fontSize: 11, fontFamily: 'Silka Medium'},
-        tabBarItemStyle: {width: 130, paddingLeft: 0},
+        tabBarItemStyle: {width: 120, paddingLeft: 0},
         tabBarIndicatorStyle: {
           backgroundColor: colors.cyan,
           width: '35%',

@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   defaultHeaderContainer: {
     height: 90,
     paddingTop: 10,
-    paddingHorizontal: 25,
+    paddingHorizontal: 20,
     backgroundColor: colors.white,
   },
 
