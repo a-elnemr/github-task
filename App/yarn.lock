@@ -2923,6 +2923,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native-community/datetimepicker@npm:^8.2.0":
+  version: 8.2.0
+  resolution: "@react-native-community/datetimepicker@npm:8.2.0"
+  dependencies:
+    invariant: ^2.2.4
+  peerDependencies:
+    expo: ">=50.0.0"
+    react: "*"
+    react-native: "*"
+    react-native-windows: "*"
+  peerDependenciesMeta:
+    expo:
+      optional: true
+    react-native-windows:
+      optional: true
+  checksum: 3adc9346f8948abed246da3bfa3a223e44c2c5903070178a82e583ce6f8273607fe5a542af834b3a27aff81980c555e5f72bf0e87c85e3f00856a0de21525374
+  languageName: node
+  linkType: hard
+
 "@react-native-picker/picker@npm:^2.7.7":
   version: 2.7.7
   resolution: "@react-native-picker/picker@npm:2.7.7"
@@ -4392,6 +4411,7 @@ __metadata:
     "@babel/core": ^7.20.0
     "@babel/preset-env": ^7.20.0
     "@babel/runtime": ^7.20.0
+    "@react-native-community/datetimepicker": ^8.2.0
     "@react-native-picker/picker": ^2.7.7
     "@react-native/babel-preset": 0.74.85
     "@react-native/eslint-config": 0.74.85
@@ -4409,7 +4429,12 @@ __metadata:
     react: 18.2.0
     react-dom: ^18.3.1
     react-native: 0.74.3
+    react-native-date-picker: ^5.0.4
     react-native-dropdown-picker: ^5.4.6
+    react-native-modal-datetime-picker: ^17.1.0
+    react-native-modal-filter-picker: ^2.1.0
+    react-native-modal-selector: ^2.1.2
+    react-native-modern-datepicker: ^1.0.0-beta.91
     react-native-pager-view: ^6.3.3
     react-native-tab-view: ^3.5.2
     react-native-vector-icons: ^10.1.0
@@ -9610,6 +9635,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jalaali-js@npm:^1.1.0":
+  version: 1.2.7
+  resolution: "jalaali-js@npm:1.2.7"
+  checksum: 4163ada3fdcc114eb68bc6fe86141aedfb63dc5fa8147c3ea4ad5f72a10b4f42cbc6b010833b7d09dc8ce5b76531b6e2c840bc8f33caf0429f261bdefb24c4e0
+  languageName: node
+  linkType: hard
+
 "jest-changed-files@npm:^27.5.1":
   version: 27.5.1
   resolution: "jest-changed-files@npm:27.5.1"
@@ -11751,7 +11783,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"moment@npm:^2.30.1":
+"moment-jalaali@npm:^0.9.2":
+  version: 0.9.6
+  resolution: "moment-jalaali@npm:0.9.6"
+  dependencies:
+    jalaali-js: ^1.1.0
+    moment: ^2.22.2
+    moment-timezone: ^0.5.21
+    rimraf: ^3.0.2
+  checksum: 3ff8ab6b73346a31aeca9816fdadb362ca409ad1b882ed0842e1ec65cedc733cb2f109f8040f74a8c9cd1b37d53fa61bb02b75283599e4f3afe13eef337320d7
+  languageName: node
+  linkType: hard
+
+"moment-timezone@npm:^0.5.21":
+  version: 0.5.45
+  resolution: "moment-timezone@npm:0.5.45"
+  dependencies:
+    moment: ^2.29.4
+  checksum: a22e9f983fbe1a01757ce30685bce92e3f6efa692eb682afd47b82da3ff960b3c8c2c3883ec6715c124bc985a342b57cba1f6ba25a1c8b4c7ad766db3cd5e1d0
+  languageName: node
+  linkType: hard
+
+"moment@npm:^2.22.2, moment@npm:^2.29.4, moment@npm:^2.30.1":
   version: 2.30.1
   resolution: "moment@npm:2.30.1"
   checksum: 859236bab1e88c3e5802afcf797fc801acdbd0ee509d34ea3df6eea21eb6bcc2abd4ae4e4e64aa7c986aa6cba563c6e62806218e6412a765010712e5fa121ba6
@@ -13540,7 +13593,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
+"prop-types@npm:^15.5.10, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -13773,6 +13826,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-date-picker@npm:^5.0.4":
+  version: 5.0.4
+  resolution: "react-native-date-picker@npm:5.0.4"
+  peerDependencies:
+    react: ">= 17.0.1"
+    react-native: ">= 0.64.3"
+  checksum: 67db7fba5de613c61a70b5b9274daef8c7d3b6f6cdc5a6063eb61126d4df43252c501c2cb78ebda37fb0997ccb0994e949976d0fb395453580019923100e03ad
+  languageName: node
+  linkType: hard
+
 "react-native-dropdown-picker@npm:^5.4.6":
   version: 5.4.6
   resolution: "react-native-dropdown-picker@npm:5.4.6"
@@ -13780,6 +13843,50 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: d81ee3d68c17107a4d21dbdf9c2fe2ffe4bf4398973d10113139aadc0674221ce5038b945299fba2abc796930ec5e6d5f84291945bf903344493a15b8e2fca43
+  languageName: node
+  linkType: hard
+
+"react-native-modal-datetime-picker@npm:^17.1.0":
+  version: 17.1.0
+  resolution: "react-native-modal-datetime-picker@npm:17.1.0"
+  dependencies:
+    prop-types: ^15.7.2
+  peerDependencies:
+    "@react-native-community/datetimepicker": ">=6.7.0"
+    react-native: ">=0.65.0"
+  checksum: 8a5bb21167799cc5410c0fb6c39bb3495fbaa463ef57d8f90c65429697c2b02b2e4e046e3e91c6246e1f4bd187c5fbcd30f61a6449b8d68808e68715b1332779
+  languageName: node
+  linkType: hard
+
+"react-native-modal-filter-picker@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "react-native-modal-filter-picker@npm:2.1.0"
+  peerDependencies:
+    prop-types: ">=15.6.0"
+    react: ">=15.0.0"
+    react-native: ">=0.40.0"
+  checksum: 2015ab9ee5b0158fb50f66d4fb15e30cadb2173c7aa724b0ec55c22ed3b0d5c24a2026deb5c4df4180901128ee46b2410363727a46b8938702f4ef126fff3ab3
+  languageName: node
+  linkType: hard
+
+"react-native-modal-selector@npm:^2.1.2":
+  version: 2.1.2
+  resolution: "react-native-modal-selector@npm:2.1.2"
+  dependencies:
+    prop-types: ^15.5.10
+  checksum: c7b00ebceb6fe15e025ef1655483bc98fdb150453fb27e71d17a282a87317c5b1e242a1108f5247fac99594e6778470513d19c21e02eb2ce81f80688dd616419
+  languageName: node
+  linkType: hard
+
+"react-native-modern-datepicker@npm:^1.0.0-beta.91":
+  version: 1.0.0-beta.91
+  resolution: "react-native-modern-datepicker@npm:1.0.0-beta.91"
+  dependencies:
+    moment-jalaali: ^0.9.2
+    prop-types: ^15.7.2
+  peerDependencies:
+    react-native: ">=0.59"
+  checksum: a5a81b2332ca5c2d253d257f7fca85ca3720932c377f07390f4afd6ae2ec30551ef82006a2a86d11cea34bdf209814b74755fb26a03177ba344e2341101d2597
   languageName: node
   linkType: hard
 
