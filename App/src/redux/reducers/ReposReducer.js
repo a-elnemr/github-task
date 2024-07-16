@@ -1,6 +1,7 @@
 import moment from 'moment';
 import {
   GET_FILTERED_BY_LANG_SUCCESS,
+
   GET_REPOS_FALUER,
   GET_REPOS_SUCCESS,
   REQUEST_REPOS,
@@ -8,6 +9,7 @@ import {
   SET_REPOS_LANGUAGE,
   SET_SELECTED_DATE,
   SET_VIEWED_REPOS,
+
 } from '../constants/ActionsTypes';
 
 const intialState = {
@@ -37,6 +39,7 @@ const RepoReducer = (state = intialState, action) => {
         viewedRepos: action.payload,
       };
 
+
     case GET_REPOS_FALUER:
       return {
         ...state,
@@ -54,6 +57,7 @@ const RepoReducer = (state = intialState, action) => {
       return {
         ...state,
         repoLanguages: action.payload,
+
       };
     case SET_SELECTED_DATE:
       return {
@@ -70,6 +74,7 @@ const RepoReducer = (state = intialState, action) => {
         loading: false,
         filterdRepos: action.payload,
       };
+
     default:
       return state;
   }

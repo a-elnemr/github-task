@@ -8,6 +8,7 @@ import {
   SET_SELECTED_DATE,
   GET_FILTERED_BY_LANG_SUCCESS,
   SET_VIEWED_REPOS,
+
 } from '../constants/ActionsTypes';
 
 export const toggleDarkMode = () => ({
@@ -24,6 +25,7 @@ export const getFilteredByLangSuccess = repos => ({
   type: GET_FILTERED_BY_LANG_SUCCESS,
   payload: repos,
 });
+
 
 export const getReposFaluer = error => ({
   type: GET_REPOS_FALUER,
@@ -52,6 +54,7 @@ export const fetchTopRepos = () => {
     try {
       const response = await fetch(
         `https://api.github.com/search/repositories?q=created:>2019-01-01+stars:>0&sort=stars&order=desc&per_page=100`,
+
       );
       const data = await response.json();
       dispatch(getReposSuccess(data.items));
@@ -97,3 +100,4 @@ export const fetchRepoLanguages = () => {
     }
   };
 };
+

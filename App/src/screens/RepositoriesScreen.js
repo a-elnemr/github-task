@@ -7,6 +7,7 @@ import {
   FlatList,
   ActivityIndicator,
 } from 'react-native';
+
 import ScreenTitle from '../components/ScreenTitle';
 import colors from '../config/color';
 import {useDispatch, useSelector} from 'react-redux';
@@ -15,6 +16,7 @@ import {
   fetchRepoLanguages,
   fetchRepos,
   fetchTopRepos,
+
   getReposLanguages,
   setReposLanguages,
 } from '../redux/actions/Actions';
@@ -36,6 +38,7 @@ function RepositoriesScreen(props) {
   };
 
   const languagesOptions = repoLanguages.map(lang => ({
+
     label: lang,
     value: lang,
   }));
@@ -90,6 +93,7 @@ function RepositoriesScreen(props) {
             )}
           />
         </>
+
       )}
     </View>
   );
@@ -130,6 +134,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+
 });
 
 export default RepositoriesScreen;
