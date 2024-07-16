@@ -1,11 +1,15 @@
 import moment from 'moment';
 import {
+  GET_FILTERED_BY_LANG_SUCCESS,
+
   GET_REPOS_FALUER,
   GET_REPOS_SUCCESS,
   REQUEST_REPOS,
   SET_PICKER_VALUE,
   SET_REPOS_LANGUAGE,
   SET_SELECTED_DATE,
+  SET_VIEWED_REPOS,
+
 } from '../constants/ActionsTypes';
 
 const intialState = {
@@ -13,7 +17,6 @@ const intialState = {
   error: null,
   allRepos: [],
   viewedRepos: [],
-  pickerValue: 10,
   repoLanguages: [],
   filterdRepos: [],
   pickedLanguage: 'Any',
@@ -33,31 +36,28 @@ const RepoReducer = (state = intialState, action) => {
         ...state,
         loading: false,
         allRepos: action.payload,
-        viewedRepos: action.payload.slice(0, state.pickerValue),
-        filterdRepos: state.allRepos,
-        repoLanguages: action.payload
-          .map(repo => repo.language)
-          .filter(lang => lang),
+        viewedRepos: action.payload,
       };
+
+
     case GET_REPOS_FALUER:
       return {
         ...state,
         loading: false,
         error: action.payload,
       };
-    case SET_PICKER_VALUE:
+    case SET_VIEWED_REPOS:
       return {
         ...state,
-        pickerValue: action.payload,
-        viewedRepos: state.allRepos.slice(0, action.payload),
+        loading: false,
+        viewedRepos: action.payload,
       };
+
     case SET_REPOS_LANGUAGE:
       return {
         ...state,
-        pickedLanguage: action.payload,
-        filterdRepos: state.allRepos.filter(
-          repo => repo.language == action.payload,
-        ),
+        repoLanguages: action.payload,
+
       };
     case SET_SELECTED_DATE:
       return {
@@ -68,6 +68,13 @@ const RepoReducer = (state = intialState, action) => {
           return repoDate.isSameOrAfter(moment(action.payload, 'YYYY-MM-DD'));
         }),
       };
+    case GET_FILTERED_BY_LANG_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        filterdRepos: action.payload,
+      };
+
     default:
       return state;
   }

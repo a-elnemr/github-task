@@ -1,4 +1,5 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
+
 import {
   View,
   StyleSheet,
@@ -9,13 +10,22 @@ import {
 import {useDispatch, useSelector} from 'react-redux';
 import colors from '../config/color';
 import ScreenTitle from '../components/ScreenTitle';
-import {fetchRepos, setPickerValue} from '../redux/actions/Actions';
+import {
+  fetchRepos,
+  fetchTopRepos,
+  setPickerValue,
+  setViewedRepo,
+} from '../redux/actions/Actions';
+
 import ExploreCard from '../components/ExploreCard';
 import ModalPicker from '../components/ModalPicker';
 
 function ExploreScreen(props) {
   const dispatch = useDispatch();
-  const {loading, error, viewedRepos, pickerValue, repoLanguages} = useSelector(
+
+  const [pickerValue, setPickerValue] = useState(100);
+  const {loading, error, viewedRepos, repoLanguages, allRepos} = useSelector(
+
     state => state.repos,
   );
   const darkMode = useSelector(state => state.theme.darkMode);
@@ -26,11 +36,13 @@ function ExploreScreen(props) {
   ];
 
   const handleValueChange = value => {
-    dispatch(setPickerValue(value));
+    setPickerValue(value);
+    dispatch(setViewedRepo(allRepos.slice(0, value)));
   };
 
   useEffect(() => {
-    dispatch(fetchRepos());
+    dispatch(fetchTopRepos());
+
   }, [dispatch]);
 
   return (
@@ -56,9 +68,8 @@ function ExploreScreen(props) {
           size="large"
           color={colors.cyan}
         />
-      ) : error ? (
-        <Text style={styles.loadingMargin}>Error loading data: {error}</Text>
-      ) : (
+      ) : viewedRepos && viewedRepos.length > 0 ? (
+
         <FlatList
           data={viewedRepos}
           style={styles.flatListStyle}
@@ -74,6 +85,9 @@ function ExploreScreen(props) {
             />
           )}
         />
+      ) : (
+        <Text style={styles.loadingMargin}>Error loading data: {error}</Text>
+
       )}
     </View>
   );

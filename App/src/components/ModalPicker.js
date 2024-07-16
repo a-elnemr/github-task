@@ -121,6 +121,8 @@ const styles = StyleSheet.create({
     marginRight: 5,
     fontFamily: 'Silka Regular',
     fontSize: 12,
+    color: colors.grey,
+
   },
   darkViewText: {
     color: colors.white,
