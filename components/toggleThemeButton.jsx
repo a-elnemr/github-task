@@ -9,7 +9,7 @@ const ToggleThemeButton = () => {
   return (
     <TouchableOpacity
       onPress={toggleTheme}
-      style={[styles.button, {marginTop: '2%'}]}>
+      style={[styles.button, {marginTop: '5%'}]}>
       <MaterialCommunityIcons
         name={isDarkTheme ? 'white-balance-sunny' : 'moon-waning-crescent'}
         size={30}

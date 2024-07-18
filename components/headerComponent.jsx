@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {Image, StyleSheet, View} from 'react-native';
 import {Text} from 'react-native-elements';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/FontAwesome6';
@@ -14,17 +14,25 @@ const HeaderComponent = () => {
       <View style={styles.headerContainer}>
         <View style={{flexDirection: 'row', marginLeft: 16}}>
           <View style={{marginTop: '2%'}}>
-            <MaterialCommunityIcons
+            {/* <MaterialCommunityIcons
               name="leaf"
               size={40}
-              color={'#00fa9a'}></MaterialCommunityIcons>
+              color={'#00fa9a'}></MaterialCommunityIcons> */}
+            <Image
+              source={require('../assets/logo.png')}
+              style={{
+                marginTop: '20%',
+                width: 38,
+                height: 35,
+                objectFit: 'contain',
+              }}></Image>
           </View>
 
           <Text style={[styles.headerTxt, {color: theme.textColor}]}>
             milango
           </Text>
           <ToggleThemeButton></ToggleThemeButton>
-          <View style={{marginTop: '2%'}}>
+          <View style={{marginTop: '4%'}}>
             <EvilIcons name="search" size={38} color={theme.text}></EvilIcons>
           </View>
         </View>

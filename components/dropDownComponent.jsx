@@ -1,13 +1,11 @@
-// DropdownComponent.js
-
 import React, {useCallback, useState} from 'react';
 import {View, StyleSheet, Text} from 'react-native';
 import {Dropdown} from 'react-native-element-dropdown';
 import {useTheme} from '../theme/themeContext';
 import {useDispatch, useSelector} from 'react-redux';
-import {getTopRepositories} from '../redux/slices/repositoriesSlice';
+import {getTopRepositories, setLimit} from '../redux/slices/repositoriesSlice';
 
-const DropdownComponent = () => {
+const DropdownComponent = ({setCheck}) => {
   const [value, setValue] = useState(null);
 
   const dispatch = useDispatch();
@@ -25,6 +23,7 @@ const DropdownComponent = () => {
   const handleChange = useCallback(
     item => {
       setValue(item.value);
+      setCheck(value);
 
       dispatch(getTopRepositories(item.value));
     },
@@ -46,7 +45,9 @@ const DropdownComponent = () => {
         labelField="label"
         valueField="value"
         placeholder="Top 100"
-        placeholderStyle={{color: theme.text}}
+        placeholderStyle={{
+          color: theme.text,
+        }}
         value={value}
         onChange={handleChange}
       />
@@ -58,19 +59,21 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
 
-    paddingVertical: 16,
+    paddingVertical: '6%',
   },
   label: {
     fontSize: 20,
-    marginBottom: 10,
+    marginBottom: '10%',
   },
   dropdown: {
     width: '52%',
     height: 40,
 
+    // height: '100%',
+
     borderWidth: 1,
     borderRadius: 8,
-    paddingHorizontal: 8,
+    paddingHorizontal: '3%',
     fontSize: 30,
   },
 });

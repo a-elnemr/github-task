@@ -1,9 +1,8 @@
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import {useTheme} from '../theme/themeContext';
-import {color} from 'react-native-elements/dist/helpers';
 
-const ErrorComponent = () => {
+const ErrorComponent = ({msg}) => {
   const {theme} = useTheme();
   return (
     <View style={[styles.container, {backgroundColor: theme.background}]}>
@@ -12,7 +11,7 @@ const ErrorComponent = () => {
         source={{
           uri: 'https://static.vecteezy.com/system/resources/thumbnails/028/149/207/small_2x/3d-warning-or-danger-risk-message-alert-problem-icon-png.png',
         }}></Image>
-      <Text style={[styles.txt, {color: theme.text}]}>Please try again...</Text>
+      <Text style={[styles.txt, {color: theme.text}]}>{msg}</Text>
     </View>
   );
 };
@@ -26,9 +25,9 @@ const styles = StyleSheet.create({
   },
   img: {
     width: '100%',
-    height: 340,
+    aspectRatio: 1,
   },
-  txt: {fontSize: 30, fontWeight: '700'},
+  txt: {fontSize: 20, fontWeight: '400'},
 });
 
 export default React.memo(ErrorComponent);

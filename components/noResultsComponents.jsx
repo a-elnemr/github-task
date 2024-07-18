@@ -5,14 +5,14 @@ import {useNavigation} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
 import {getAllRepositories} from '../redux/slices/repositoriesSlice';
 
-const NoResultsComponent = ({navigation}) => {
+const NoResultsComponent = ({navigation, resetFilters}) => {
   const {navigate} = useNavigation();
   const dispatch = useDispatch();
 
   const handleBack = useCallback(() => {
-    dispatch(getAllRepositories());
+    resetFilters();
     navigate('Repositories');
-  }, [dispatch]);
+  }, [resetFilters, navigate]);
   const {theme} = useTheme();
   return (
     <View style={[styles.container, {backgroundColor: theme.background}]}>
@@ -40,7 +40,8 @@ const styles = StyleSheet.create({
   },
   img: {
     width: '100%',
-    height: 340,
+
+    aspectRatio: 1,
   },
   txt: {fontSize: 30, fontWeight: '700'},
 });

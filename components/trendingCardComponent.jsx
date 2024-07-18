@@ -31,7 +31,7 @@ const TrendingCardComponent = ({
       <View style={[styles.cardContent, {backgroundColor: theme.background2}]}>
         <View style={{flex: 1}}>
           <View style={styles.rowContainer}>
-            <Text style={{color: theme.text, marginRight: '12%'}}>
+            <Text style={{color: theme.text, marginRight: '12%', fontSize: 12}}>
               Trending repository
             </Text>
 
@@ -39,11 +39,11 @@ const TrendingCardComponent = ({
               <View style={{marginTop: '4%'}}>
                 <AntDesign
                   name="staro"
-                  size={24}
+                  size={20}
                   color={'#00fa9a'}
                   style={{marginTop: -10}}></AntDesign>
               </View>
-              <Text style={{fontSize: 18, marginTop: -5, color: theme.text}}>
+              <Text style={{fontSize: 15, marginTop: -5, color: theme.text}}>
                 Star
               </Text>
               <View style={[styles.watched, {backgroundColor: theme.view1}]}>
@@ -55,7 +55,11 @@ const TrendingCardComponent = ({
         <View style={{flex: 1}}>
           <View style={{flexDirection: 'row', justifyContent: 'flex-start'}}>
             <View style={{marginTop: '3%'}}>
-              <AntDesign name="book" size={28} color={'#00fa9a'}></AntDesign>
+              <AntDesign
+                name="book"
+                size={25}
+                color={'#00fa9a'}
+                style={{marginTop: -6}}></AntDesign>
             </View>
             <Text style={[styles.title, {color: theme.textColor}]}>
               {title}
@@ -65,7 +69,7 @@ const TrendingCardComponent = ({
         <Text
           style={[styles.description, {color: theme.text}]}
           numberOfLines={allDescription ? undefined : 3}>
-          {description}
+          {description ? description : 'hello this repos .....'}
         </Text>
         <Text
           style={[styles.descriptionText, {color: theme.textColor}]}
@@ -84,7 +88,7 @@ const TrendingCardComponent = ({
                 styles.description,
                 {marginLeft: '5%', color: theme.text},
               ]}>
-              {language ? language : 'Unknown'}
+              {language ? language : 'C++'}
             </Text>
           </View>
         </View>
@@ -102,23 +106,27 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     shadowOffset: {width: 0, height: 2},
     elevation: 3,
-    marginBottom: 20,
+    marginBottom: '7%',
     overflow: 'hidden',
   },
   image: {
     width: '100%',
-    height: 200,
-    objectFit: 'contain',
+    aspectRatio: 2 / 1.25,
+    resizeMode: 'contain',
   },
   cardContent: {
-    padding: 15,
+    padding: '6%',
   },
   title: {
-    fontSize: 30,
+    fontSize: 22,
     fontWeight: 'bold',
     color: '#00008b',
-    marginBottom: 10,
+    marginBottom: '6%',
     marginLeft: '2%',
+    flex: 1,
+    flexWrap: 'wrap',
+    textAlign: 'left',
+    flexShrink: 0,
   },
   description: {
     fontSize: 14,
@@ -128,7 +136,7 @@ const styles = StyleSheet.create({
   watched: {
     backgroundColor: '#dda0dd',
     opacity: 0.8,
-    marginLeft: 15,
+    marginLeft: '8%',
     marginTop: -10,
     borderRadius: 8,
     justifyContent: 'center',

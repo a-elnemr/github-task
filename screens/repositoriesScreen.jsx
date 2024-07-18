@@ -11,27 +11,34 @@ import RepositoriesCardComponent from '../components/repositoriesCardComponent';
 import Entypo from 'react-native-vector-icons/Entypo';
 
 import LanguageModalComponent from '../components/languageModalComponent';
+
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import {useTheme} from '../theme/themeContext';
 import {useDispatch, useSelector} from 'react-redux';
 import {
+  fetchNextPage,
+  fetchPrevPage,
   filterRepositoriesByDate,
   filterRepositoriesWithLanguage,
   getAllRepositories,
+  setSelectedLaanguage,
 } from '../redux/slices/repositoriesSlice';
 import LoaderComponent from '../components/spinnerComponent';
 import ErrorComponent from '../components/errorComponent';
 import NoResultsComponent from '../components/noResultsComponents';
+import FetchButton from '../components/buttons';
 
 const RepositoriesScreen = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [selectedDate, setSelectedDate] = useState('YY/DD/MM');
-  const [selectedLanguage, setSelectedLanguage] = useState('Any');
+  const [selectedLanguage, setSelectedLanguage] = useState('Language: Any');
 
   const {theme} = useTheme();
   const dispatch = useDispatch();
-  const {reposData, loading, error} = useSelector(state => state.repository);
+  const {reposData, loading, error, paginationLinks} = useSelector(
+    state => state.repository,
+  );
 
   const data = [
     {label: 'Any', value: 'option1'},
@@ -51,6 +58,13 @@ const RepositoriesScreen = () => {
   const toggleLanguageModal = () => {
     setModalVisible(!modalVisible);
   };
+  const handleLanguageSelect = language => {
+    setSelectedLanguage(language.label);
+    dispatch(setSelectedLaanguage(language.label));
+    setSelectedDate('YY/DD/MM');
+    toggleLanguageModal();
+    dispatch(filterRepositoriesWithLanguage(language.label));
+  };
 
   const showDatePicker = useCallback(() => {
     setDatePickerVisibility(true);
@@ -69,29 +83,41 @@ const RepositoriesScreen = () => {
       const data = dispatch(filterRepositoriesByDate(formattedDate));
       setSelectedDate(formattedDate);
       hideDatePicker();
-      if (data.length === 0) {
-        setSelectedDate('yy/dd/mm');
-      }
     },
     [selectedDate],
   );
 
-  const handleLanguageSelect = language => {
-    setSelectedLanguage(language.label);
-    toggleLanguageModal();
-    dispatch(filterRepositoriesWithLanguage(language.label));
+  const resetFilters = () => {
+    setSelectedLanguage('Language: Any');
+    setSelectedDate('YY/DD/MM');
+    dispatch(getAllRepositories());
   };
 
   useEffect(() => {
     dispatch(getAllRepositories());
   }, [dispatch]);
 
+  const handleNext = () => {
+    if (selectedLanguage !== 'Any') {
+      dispatch(fetchNextPage(selectedLanguage));
+    } else {
+      dispatch(fetchNextPage());
+    }
+  };
+  const handlePrev = () => {
+    if (selectedLanguage !== 'Any') {
+      dispatch(fetchNextPage(selectedLanguage));
+    } else {
+      dispatch(fetchNextPage());
+    }
+  };
+
   if (loading) return <LoaderComponent></LoaderComponent>;
-  if (error) return <ErrorComponent></ErrorComponent>;
+  if (error) return <ErrorComponent msg={error}></ErrorComponent>;
   if (reposData.length === 0)
     return (
       <>
-        <NoResultsComponent></NoResultsComponent>
+        <NoResultsComponent resetFilters={resetFilters}></NoResultsComponent>
       </>
     );
 
@@ -104,9 +130,12 @@ const RepositoriesScreen = () => {
         <View style={{flex: 1}}>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <View style={[styles.modal, {backgroundColor: theme.background2}]}>
-              <Text style={[styles.modalText, {color: theme.text}]}>
-                Language: {selectedLanguage}
-              </Text>
+              <TextInput
+                onFocus={toggleLanguageModal}
+                style={[styles.modalText, {color: theme.text}]}>
+                {selectedLanguage}
+              </TextInput>
+
               <Entypo
                 onPress={toggleLanguageModal}
                 name="chevron-small-down"
@@ -134,7 +163,7 @@ const RepositoriesScreen = () => {
           </View>
         </View>
       </View>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         {reposData.map((item, index) => (
           <RepositoriesCardComponent
             key={item.id}
@@ -146,6 +175,20 @@ const RepositoriesScreen = () => {
             imageUrl={item.owner.avatar_url}
           />
         ))}
+        <View style={{flex: 1}}>
+          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <FetchButton
+              title="Prev"
+              icon="arrow-left"
+              press={handlePrev}
+              disabled={!paginationLinks.prev}></FetchButton>
+            <FetchButton
+              title="Next"
+              icon="arrow-right"
+              press={handleNext}
+              disabled={!paginationLinks.next}></FetchButton>
+          </View>
+        </View>
       </ScrollView>
 
       <LanguageModalComponent
@@ -185,9 +228,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    height: 42,
+    aspectRatio: 2 / 0.55,
   },
-  modalText: {marginHorizontal: 6},
+  modalText: {marginStart: 6},
 });
 
 export default React.memo(RepositoriesScreen);

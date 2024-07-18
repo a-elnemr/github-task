@@ -1,17 +1,23 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import DropdownComponent from '../components/dropDownComponent';
 import TrendingCardComponent from '../components/trendingCardComponent';
 import {useTheme} from '../theme/themeContext';
 import {useDispatch, useSelector} from 'react-redux';
-import {getTopRepositories} from '../redux/slices/repositoriesSlice';
+import {
+  fetchNextTrend,
+  fetchPrevTrend,
+  getTopRepositories,
+} from '../redux/slices/repositoriesSlice';
 import LoaderComponent from '../components/spinnerComponent';
 import ErrorComponent from '../components/errorComponent';
+import ListDropDown from '../components/list';
 
 const ExploreScreen = () => {
-  const {trendingRepos, loading, error} = useSelector(
+  const {trendingRepos, loading, error, paginationLinks} = useSelector(
     state => state.repository,
   );
+  const [check, setcheck] = useState(null);
 
   const dispatch = useDispatch();
   const {theme} = useTheme();
@@ -19,19 +25,42 @@ const ExploreScreen = () => {
   useEffect(() => {
     dispatch(getTopRepositories('100'));
   }, [dispatch]);
+  const handleNext = () => {
+    if (paginationLinks.next) {
+      dispatch(fetchNextTrend());
+    }
+  };
+  const handlePrev = () => {
+    if (paginationLinks.prev) {
+      dispatch(fetchPrevTrend());
+    }
+  };
 
   if (loading) return <LoaderComponent></LoaderComponent>;
-  if (error) return <ErrorComponent></ErrorComponent>;
+  if (error) return <ErrorComponent msg={error}></ErrorComponent>;
   return (
     <View style={[styles.container, {backgroundColor: theme.background}]}>
-      <View style={{marginBottom: '12%'}}>
+      <View style={{marginBottom: '8%'}}>
         <Text style={[styles.headerText, {color: theme.text}]}>
           Explore Popular
         </Text>
 
-        <DropdownComponent />
+        <ListDropDown setCheck={setcheck}></ListDropDown>
+        {check && (
+          <View style={{}}>
+            <Text
+              style={{
+                fontSize: 30,
+                color: theme.text3,
+                textAlign: 'center',
+                marginTop: '5%',
+              }}>
+              Top <Text style={{color: theme.text4}}>{check}</Text> repositories
+            </Text>
+          </View>
+        )}
       </View>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         {trendingRepos.map((item, index) => (
           <TrendingCardComponent
             key={item.id}

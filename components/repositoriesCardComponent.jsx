@@ -3,6 +3,8 @@ import {View, Text, Image, StyleSheet} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import HorizontalLineComponent from './horizontalLineComponent';
 import {useTheme} from '../theme/themeContext';
+import {useDispatch} from 'react-redux';
+import {fetchNextPage} from '../redux/slices/repositoriesSlice';
 
 const RepositoriesCardComponent = ({
   title,
@@ -19,6 +21,7 @@ const RepositoriesCardComponent = ({
     setShowText(!showText);
   };
   const {theme} = useTheme();
+  const dispatch = useDispatch();
 
   return (
     <View style={[styles.card, {borderWidth: 1, borderColor: theme.border}]}>
@@ -32,7 +35,11 @@ const RepositoriesCardComponent = ({
         <View style={{flex: 1}}>
           <View style={{flexDirection: 'row', justifyContent: 'flex-start'}}>
             <View style={{marginTop: '3%'}}>
-              <AntDesign name="book" size={28} color={'#00fa9a'}></AntDesign>
+              <AntDesign
+                name="book"
+                size={25}
+                color={'#00fa9a'}
+                style={{marginTop: -6}}></AntDesign>
             </View>
             <Text style={[styles.title, {color: theme.textColor}]}>
               {title}
@@ -42,7 +49,7 @@ const RepositoriesCardComponent = ({
         <Text
           style={[styles.description, {color: theme.text}]}
           numberOfLines={allDescription ? undefined : 3}>
-          {description}
+          {description ? description : 'hello this is the repo where .......'}
         </Text>
         <Text
           style={[
@@ -63,9 +70,9 @@ const RepositoriesCardComponent = ({
               <View style={{marginTop: '12%'}}>
                 <AntDesign
                   name="staro"
-                  size={24}
+                  size={17}
                   color={'#00fa9a'}
-                  style={{marginTop: -10, marginRight: '1%'}}></AntDesign>
+                  style={{marginTop: -7, marginRight: '1%'}}></AntDesign>
               </View>
               <Text style={[styles.info, {color: theme.text}]}>{stars}</Text>
             </View>
@@ -73,7 +80,7 @@ const RepositoriesCardComponent = ({
               <View style={{marginTop: '12%'}}>
                 <AntDesign
                   name="fork"
-                  size={22}
+                  size={17}
                   color={'#00fa9a'}
                   style={{marginTop: -6, marginRight: '1%'}}></AntDesign>
               </View>
@@ -99,43 +106,29 @@ const styles = StyleSheet.create({
     elevation: 3,
     marginBottom: 20,
     overflow: 'hidden',
-    marginTop: 10,
+    marginTop: '8%',
   },
   image: {
     width: '100%',
-    height: 200,
-    objectFit: 'contain',
+    aspectRatio: 2 / 1.25,
+    resizeMode: 'contain',
   },
   cardContent: {
-    padding: 15,
+    padding: '6%',
   },
   title: {
-    fontSize: 30,
+    fontSize: 22,
     fontWeight: 'bold',
     color: '#00008b',
-    marginBottom: 10,
-    marginLeft: 10,
+    marginBottom: '1%',
+    marginLeft: '2%',
   },
   description: {
     fontSize: 14,
     color: 'black',
     fontWeight: '400',
   },
-  watched: {
-    backgroundColor: '#dda0dd',
-    opacity: 0.8,
-    marginLeft: 15,
-    marginTop: -10,
-    borderRadius: 8,
-    justifyContent: 'center',
-  },
-  textWatched: {
-    marginHorizontal: 10,
-    fontSize: 15,
-    color: 'purple',
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
+
   rowContainer: {flexDirection: 'row', justifyContent: 'space-around'},
   descriptionText: {
     fontSize: 18,

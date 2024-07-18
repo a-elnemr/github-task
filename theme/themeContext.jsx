@@ -5,13 +5,13 @@ const lightTheme = {
   primary: 'blue',
   background: '#EAEFF2',
   background2: 'white',
-
   text: 'black',
   textColor: '#00008b',
   view1: '#dda0dd',
   border: 'transparent',
   border2: 'grey',
   text3: 'grey',
+  text4: 'red',
   loader: '#3B5998',
   icon: 'black',
 };
@@ -26,7 +26,8 @@ const darkTheme = {
   border: 'grey',
   border2: 'lightgrey',
   text3: 'white',
-  loader: 'orange',
+  text4: 'yellow',
+  loader: '#00fa9a',
   icon: 'yellow',
 };
 
