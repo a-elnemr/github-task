@@ -1,49 +1,33 @@
-# How to submit your challenge?
+GitHub Task — React Native Solution
 
-- Before starting on the task, make sure that all the points are clear to you. (You can reply on the email with yours questions)
-- Create a new branch and push your commits to as you would do in a real-world task.
-- Issue a Pull Request, reply to the task email with repository link to confirm you already finished the task.
+- This project is a React Native app that displays top GitHub repositories with filtering by programming language and top results count (e.g., Top 10, Top 50, Top 100).
+- It uses Redux for state management
+- It supports light/dark themes
 
-# GitHub Top Stars
+-  Tech Stack
+1- React Native CLI 
+2- Custom Themes (Light / Dark)
+3- Redux for state management
+4- Custom Hooks (useFetchRepos, useTheme)
+5- Custom Fonts
+6- Reusable UI components (FilterItem, RepoItem, Loader, AppButton)
 
-The idea of this project is to implement a solution for discovering popular repositories on GitHub.
+- How to Run the App:
+  1- Clone the Repository:
+    - https://github.com/ahmednabilkamal/github-start-task.git
+  2- Install Dependencies:
+    - npm install or yarn install
+  3- Run the app:
+    - for android devices: npx react-native run-android
+    - for iOS devices: npx react-native run-ios
 
-## Service Specification
+- How to use the app:
+  1- Open Repos screen:
+    - Use the “Show Top” buttons to switch between top 10, 50, or 100 repos
+    - Use the Language buttons to filter by programming language.
+    - The repos list will automatically refresh based on your selections
+    - Press on any repository to show its details 
 
-The service should be able to provide:
-
-- A list of the most popular repositories, sorted by number of stars.
-- An option to be able to view the top 10, 50, 100 repositories should be available.
-- Given a date, the most popular repositories created from this date onwards should be returned.
-- A filter for the programming language.
-- Big plus: design this service to be able to handle great load of requests per second
-- Add theming feature for convert the design to dark or light mode
-
-## Implementation Details
-
-GitHub provides a public search endpoint which you can use for fetching the most popular repositories: [https://api.github.com/search/repositories?q=created:>2019-01-10&sort=stars&order=desc](https://api.github.com/search/repositories?q=created:%3E2019-01-10&sort=stars&order=desc).
-
-- Feel free to use any other endpoints, if you wish.
-- Should use ReactNative CLI
-- Should use Redux _not Redux ToolKit_ for state managment and for calling the endpoints
-- Should use React Navigation
-  
-
-## UI Design
-[XD Files](https://drive.google.com/file/d/1v3hMX5awOcYY3eULlXMrWUWAYqWaBbJy/view?usp=sharing).
-
-## Solution evaluation
-
-Your solution will be evaluated corresponding to these points:
-
-- The solution should have a CLI application.
-- Automated tests.
-- Scalability and performance.
-- Concise and clean code.
-- Include a readme file for how to run and use the solution.
-
-NOTE: This challenge is aimed to senior developers, so expected to hit a high point of technicality.
-
-Good Luck;
-
-Milango Team
+** Author **
+Ahmed Nabil
+Senior Mobile Developer
