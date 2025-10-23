@@ -1,49 +1,76 @@
-# How to submit your challenge?
-
-- Before starting on the task, make sure that all the points are clear to you. (You can reply on the email with yours questions)
-- Create a new branch and push your commits to as you would do in a real-world task.
-- Issue a Pull Request, reply to the task email with repository link to confirm you already finished the task.
-
 # GitHub Top Stars
 
-The idea of this project is to implement a solution for discovering popular repositories on GitHub.
+A React Native application that allows users to explore and discover the most popular GitHub repositories. The app offers filtering capabilities by programming language and creation date, along with a toggle for switching between modern dark/light themes.
 
-## Service Specification
+## Prerequisites
 
-The service should be able to provide:
+Before running the application, ensure you have the following installed:
 
-- A list of the most popular repositories, sorted by number of stars.
-- An option to be able to view the top 10, 50, 100 repositories should be available.
-- Given a date, the most popular repositories created from this date onwards should be returned.
-- A filter for the programming language.
-- Big plus: design this service to be able to handle great load of requests per second
-- Add theming feature for convert the design to dark or light mode
+- **Node.js**: Version 20 or higher
+- **React Native CLI**: 0.82.0
+- **iOS Development**: Xcode (for iOS development)
+- **Android Development**: Android Studio with Android SDK (for Android development)
+- **Package Manager**: Yarn (recommended) or npm
 
-## Implementation Details
+## How to Run
 
-GitHub provides a public search endpoint which you can use for fetching the most popular repositories: [https://api.github.com/search/repositories?q=created:>2019-01-10&sort=stars&order=desc](https://api.github.com/search/repositories?q=created:%3E2019-01-10&sort=stars&order=desc).
+### 1. Install Dependencies
 
-- Feel free to use any other endpoints, if you wish.
-- Should use ReactNative CLI
-- Should use Redux _not Redux ToolKit_ for state managment and for calling the endpoints
-- Should use React Navigation
+```bash
+yarn install
+```
+
+### 2. iOS Setup (if running on iOS)
+
+```bash
+npx pod-install
+```
+
+### 3. Start the Application
+
+**Run on Android:**
+
+```bash
+yarn android
+```
+
+**Run on iOS:**
+
+```bash
+yarn ios
+```
+
+## How to Use
+
+### Explore Screen
+
+- **View Popular Repositories**: Browse the most starred repositories on GitHub
+- **Adjust View Count**: Use the dropdown to select how many repositories to display (10, 50, or 100)
+- **Repository Information**: Each card shows:
+  - Repository name and description
+  - Star count and fork count
+  - Programming language
+  - Update date
+
+### Repositories Screen
+
+- **Filter by Language**:
+
+  - Tap the "Language" Modal
+  - Select from available programming languages or "Any"
+  - The list will update automatically
+
+- **Filter by Date**:
+
+  - Tap the "Date" Modal
+  - Select a creation date using the date picker
+  - Only repositories created after this date will be shown
+
+- **Combined Filters**: Use both language and date filters simultaneously for precise results
+
+### Theme Toggle
+
+- Use the theme toggle button in the header to switch between dark and light modes
+- Your theme preference is automatically saved and restored on app restart
+
   
-
-## UI Design
-[XD Files](https://drive.google.com/file/d/1v3hMX5awOcYY3eULlXMrWUWAYqWaBbJy/view?usp=sharing).
-
-## Solution evaluation
-
-Your solution will be evaluated corresponding to these points:
-
-- The solution should have a CLI application.
-- Automated tests.
-- Scalability and performance.
-- Concise and clean code.
-- Include a readme file for how to run and use the solution.
-
-NOTE: This challenge is aimed to senior developers, so expected to hit a high point of technicality.
-
-Good Luck;
-
-Milango Team
